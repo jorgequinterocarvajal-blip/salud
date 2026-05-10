@@ -21,112 +21,81 @@
   --purple:#8b5cf6;--purple-dim:rgba(139,92,246,0.15);
   --text:#f1f5f9;--text2:#94a3b8;--text3:#64748b;
   --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);
-  --radius:14px;--radius-sm:8px;--radius-lg:20px;
+  --radius:14px;--radius-sm:8px;
   --font:'DM Sans',sans-serif;--mono:'DM Mono',monospace;
-  --nav-h:64px;--safe-bottom:env(safe-area-inset-bottom,0px);
+  --nav-h:64px;--safe:env(safe-area-inset-bottom,0px);
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--font);font-size:15px;overflow:hidden}
 #app{display:flex;flex-direction:column;height:100%;max-width:430px;margin:0 auto;position:relative}
-
-/* ── Screens ── */
-.screen{flex:1;overflow-y:auto;overflow-x:hidden;padding:0 0 calc(var(--nav-h) + var(--safe-bottom) + 8px);display:none;-webkit-overflow-scrolling:touch}
+.screen{flex:1;overflow-y:auto;overflow-x:hidden;padding:0 0 calc(var(--nav-h) + var(--safe) + 8px);display:none;-webkit-overflow-scrolling:touch}
 .screen.active{display:block}
-
-/* ── Nav ── */
-#nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;height:calc(var(--nav-h) + var(--safe-bottom));background:rgba(15,17,23,0.92);backdrop-filter:blur(16px);border-top:0.5px solid var(--border2);display:flex;align-items:flex-start;padding-top:8px;z-index:100}
+#nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;height:calc(var(--nav-h) + var(--safe));background:rgba(15,17,23,0.95);backdrop-filter:blur(16px);border-top:0.5px solid var(--border2);display:flex;align-items:flex-start;padding-top:8px;z-index:100}
 .nav-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;cursor:pointer;border:none;background:none;color:var(--text3);font-family:var(--font);font-size:10px;font-weight:500;transition:color .2s}
 .nav-btn.active{color:var(--accent2)}
 .nav-btn svg{width:22px;height:22px;stroke-width:1.8}
-
-/* ── Header ── */
 .page-header{padding:52px 20px 16px;position:sticky;top:0;z-index:10;background:linear-gradient(var(--bg) 80%,transparent)}
 .page-title{font-size:24px;font-weight:600;letter-spacing:-0.5px}
 .page-sub{font-size:13px;color:var(--text2);margin-top:3px}
-
-/* ── Cards ── */
 .card{background:var(--bg2);border:0.5px solid var(--border);border-radius:var(--radius);padding:16px;margin:0 16px 12px}
 .card-sm{padding:12px 14px;margin:0 16px 8px}
-.card-title{font-size:12px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
-
-/* ── Buttons ── */
+.card-title{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:12px 20px;border-radius:var(--radius-sm);font-family:var(--font);font-size:14px;font-weight:500;cursor:pointer;border:none;transition:all .15s;width:100%}
 .btn-primary{background:var(--accent);color:#fff}
-.btn-primary:active{background:var(--accent2);transform:scale(.98)}
+.btn-primary:active{transform:scale(.98)}
 .btn-ghost{background:var(--bg3);color:var(--text2);border:0.5px solid var(--border2)}
-.btn-ghost:active{background:var(--bg4)}
 .btn-green{background:var(--green);color:#fff}
 .btn-sm{padding:8px 14px;font-size:13px}
-
-/* ── Badges ── */
 .badge{display:inline-block;padding:3px 9px;border-radius:99px;font-size:11px;font-weight:600}
 .badge-blue{background:var(--accent-dim);color:var(--accent2)}
 .badge-green{background:var(--green-dim);color:var(--green)}
 .badge-amber{background:var(--amber-dim);color:var(--amber)}
-.badge-red{background:var(--red-dim);color:var(--red)}
 .badge-purple{background:var(--purple-dim);color:var(--purple)}
-
-/* ── Progress bar ── */
 .pbar-track{height:5px;background:var(--bg4);border-radius:99px;overflow:hidden}
 .pbar-fill{height:100%;border-radius:99px;transition:width .5s ease}
-
-/* ── Inputs ── */
 input[type=number],input[type=text]{background:var(--bg3);border:0.5px solid var(--border2);border-radius:var(--radius-sm);padding:11px 14px;color:var(--text);font-family:var(--font);font-size:15px;width:100%;outline:none}
 input:focus{border-color:var(--accent2)}
+select{background:var(--bg3);border:0.5px solid var(--border2);border-radius:var(--radius-sm);padding:11px 10px;color:var(--text);font-family:var(--font);font-size:14px;width:100%;outline:none;appearance:none}
 label{font-size:12px;color:var(--text2);margin-bottom:5px;display:block;font-weight:500}
-
-/* ── Checkboxes ── */
 .check-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:0.5px solid var(--border);cursor:pointer}
 .check-row:last-child{border-bottom:none}
 .check-box{width:22px;height:22px;border-radius:6px;border:1.5px solid var(--border2);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .15s}
 .check-box.done{background:var(--green);border-color:var(--green)}
 .check-text{font-size:14px;line-height:1.4;flex:1}
 .check-text.done{color:var(--text3);text-decoration:line-through}
-
-/* ── Exercise accordion ── */
 .ex-item{border-bottom:0.5px solid var(--border)}
 .ex-item:last-child{border-bottom:none}
 .ex-header{display:flex;align-items:center;justify-content:space-between;padding:12px 0;cursor:pointer;gap:8px}
-.ex-name{font-size:14px;font-weight:500;flex:1;line-height:1.3}
-.ex-sets{font-size:12px;color:var(--accent2);font-family:var(--mono);white-space:nowrap}
-.ex-arrow{font-size:11px;color:var(--text3);transition:transform .2s;flex-shrink:0}
+.ex-name{font-size:13px;font-weight:500;flex:1;line-height:1.3}
+.ex-sets{font-size:11px;color:var(--accent2);font-family:var(--mono);white-space:nowrap;flex-shrink:0}
+.ex-arrow{font-size:10px;color:var(--text3);transition:transform .2s;flex-shrink:0}
 .ex-arrow.open{transform:rotate(180deg)}
 .ex-body{display:none;padding:0 0 14px;font-size:13px;color:var(--text2);line-height:1.65}
 .ex-body.open{display:block}
 .ex-tip{background:var(--accent-dim);color:var(--accent2);border-radius:6px;padding:7px 10px;margin-top:8px;font-size:12px}
-
-/* ── Weight chart ── */
-.weight-dot{fill:var(--accent2)}
-.weight-line{stroke:var(--accent2);fill:none;stroke-width:2}
-.chart-label{font-size:9px;fill:var(--text3);font-family:'DM Sans',sans-serif}
-
-/* ── Misc ── */
-.divider{height:0.5px;background:var(--border);margin:4px 16px 12px}
-.row{display:flex;align-items:center;gap:10px}
+.ex-links{display:flex;gap:8px;margin-top:10px}
+.ex-link{display:inline-flex;align-items:center;gap:5px;padding:6px 12px;border-radius:6px;font-size:12px;font-weight:500;text-decoration:none;cursor:pointer;border:none;font-family:var(--font)}
+.ex-link-yt{background:rgba(239,68,68,0.15);color:#ef4444}
+.ex-link-img{background:rgba(37,99,235,0.15);color:var(--accent2)}
 .row-between{display:flex;align-items:center;justify-content:space-between}
-.stat-num{font-size:28px;font-weight:600;letter-spacing:-1px;font-family:var(--mono)}
-.stat-label{font-size:12px;color:var(--text2);margin-top:2px}
+.stat-num{font-size:26px;font-weight:600;letter-spacing:-1px;font-family:var(--mono)}
+.stat-label{font-size:11px;color:var(--text2);margin-top:2px}
 .tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:var(--bg4);color:var(--text2);margin-right:4px;margin-bottom:4px}
-.empty{text-align:center;padding:40px 20px;color:var(--text3);font-size:14px}
-.today-pill{background:var(--accent);color:#fff;font-size:10px;font-weight:700;padding:2px 7px;border-radius:99px;letter-spacing:.05em}
-
-/* Phase colors */
-.phase-1{background:rgba(37,99,235,0.12);border-color:rgba(37,99,235,0.25)}
-.phase-2{background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.25)}
-.phase-3{background:rgba(245,158,11,0.1);border-color:rgba(245,158,11,0.25)}
+.empty{text-align:center;padding:32px 20px;color:var(--text3);font-size:13px}
+.divider{height:0.5px;background:var(--border);margin:4px 16px 12px}
+.equip-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700;background:var(--green-dim);color:var(--green);margin-right:4px}
+.new-badge{background:var(--amber-dim);color:var(--amber)}
 </style>
 </head>
 <body>
 <div id="app">
 
-<!-- ══════════ SCREEN: INICIO ══════════ -->
+<!-- INICIO -->
 <div class="screen active" id="s-home">
   <div class="page-header">
     <div class="page-title" id="home-greeting">Hola 👋</div>
     <div class="page-sub" id="home-date"></div>
   </div>
-
-  <!-- Semana actual -->
   <div class="card" id="home-week-card">
     <div class="row-between" style="margin-bottom:12px">
       <div>
@@ -138,184 +107,136 @@ label{font-size:12px;color:var(--text2);margin-bottom:5px;display:block;font-wei
         <div style="font-size:12px;color:var(--text2);margin-top:6px" id="home-days-txt">4 días/sem · 30 min</div>
       </div>
     </div>
-    <div style="margin-bottom:6px">
-      <div class="row-between" style="margin-bottom:4px">
-        <span style="font-size:12px;color:var(--text2)">Progreso del programa</span>
-        <span style="font-size:12px;font-family:var(--mono);color:var(--accent2)" id="home-prog-pct">0%</span>
-      </div>
-      <div class="pbar-track"><div class="pbar-fill" id="home-prog-bar" style="width:0%;background:var(--accent)"></div></div>
+    <div class="row-between" style="margin-bottom:4px">
+      <span style="font-size:12px;color:var(--text2)">Progreso del programa</span>
+      <span style="font-size:12px;font-family:var(--mono);color:var(--accent2)" id="home-prog-pct">0%</span>
     </div>
+    <div class="pbar-track"><div class="pbar-fill" id="home-prog-bar" style="width:0%;background:var(--accent)"></div></div>
   </div>
-
-  <!-- Hábitos hoy -->
   <div class="card">
     <div class="card-title">Hábitos de hoy</div>
     <div id="habits-today"></div>
     <div style="margin-top:12px">
       <div class="row-between" style="margin-bottom:5px">
-        <span style="font-size:12px;color:var(--text2)" id="habits-count">0 / 8 completados</span>
+        <span style="font-size:12px;color:var(--text2)" id="habits-count">0 / 8</span>
         <span style="font-size:12px;color:var(--green)" id="habits-pct">0%</span>
       </div>
       <div class="pbar-track"><div class="pbar-fill" id="habits-bar" style="width:0%;background:var(--green)"></div></div>
     </div>
   </div>
-
-  <!-- Peso rápido -->
   <div class="card card-sm">
-    <div class="card-title">Registrar peso de hoy</div>
-    <div class="row" style="gap:8px">
+    <div class="card-title">Registrar peso</div>
+    <div style="display:flex;gap:8px">
       <input type="number" id="quick-weight" placeholder="kg" step="0.1" style="flex:1">
       <button class="btn btn-primary btn-sm" style="width:auto;padding:11px 18px" onclick="saveQuickWeight()">Guardar</button>
     </div>
     <div style="font-size:12px;color:var(--text2);margin-top:8px" id="last-weight-txt"></div>
   </div>
-
-  <!-- Ir a rutina hoy -->
   <div style="padding:0 16px 8px">
     <button class="btn btn-ghost" onclick="goToTodayRoutine()">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
       Ver rutina de hoy
     </button>
   </div>
-
-  <!-- Últimos resultados -->
-  <div class="card" id="home-results-card">
+  <div class="card">
     <div class="card-title">Últimas sesiones</div>
     <div id="home-recent-sessions"></div>
   </div>
 </div>
 
-<!-- ══════════ SCREEN: PLAN ══════════ -->
+<!-- PLAN -->
 <div class="screen" id="s-plan">
   <div class="page-header">
-    <div class="page-title">Plan 6 meses</div>
-    <div class="page-sub">Programa completo de entrenamiento</div>
+    <div class="page-title">Plan 26 semanas</div>
+    <div class="page-sub">4 días/semana · progresión gradual</div>
   </div>
-
-  <!-- Fases -->
-  <div style="padding:0 16px 4px;font-size:12px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.08em">Fases del programa</div>
+  <div style="padding:0 16px 6px;font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.08em">Fases del programa</div>
   <div id="phases-list"></div>
-
   <div class="divider"></div>
-  <div style="padding:0 16px 4px;font-size:12px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.08em">Progresión semana a semana</div>
-  <div class="card">
-    <div id="prog-table"></div>
-  </div>
-
-  <div class="divider"></div>
-  <div style="padding:0 16px 4px;font-size:12px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.08em">Equipamiento</div>
+  <div style="padding:0 16px 6px;font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.08em">Equipamiento</div>
   <div id="equip-list"></div>
+  <div class="divider"></div>
+  <div style="padding:0 16px 6px;font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.08em">Progresión semana a semana</div>
+  <div class="card"><div id="prog-table"></div></div>
   <div style="height:8px"></div>
 </div>
 
-<!-- ══════════ SCREEN: RUTINAS ══════════ -->
+<!-- RUTINAS -->
 <div class="screen" id="s-routines">
   <div class="page-header">
     <div class="page-title">Rutinas</div>
-    <div class="page-sub">Semanas 1–8 detalladas</div>
+    <div class="page-sub">26 semanas · toca un ejercicio para ver más</div>
   </div>
-
-  <!-- Bloque selector -->
-  <div style="display:flex;gap:6px;padding:0 16px 14px;overflow-x:auto">
-    <button class="btn btn-primary btn-sm" id="blq-0" onclick="setBloque(0)" style="white-space:nowrap;width:auto">Sem 1–2</button>
-    <button class="btn btn-ghost btn-sm" id="blq-1" onclick="setBloque(1)" style="white-space:nowrap;width:auto">Sem 3–4</button>
-    <button class="btn btn-ghost btn-sm" id="blq-2" onclick="setBloque(2)" style="white-space:nowrap;width:auto">Sem 5–6</button>
-    <button class="btn btn-ghost btn-sm" id="blq-3" onclick="setBloque(3)" style="white-space:nowrap;width:auto">Sem 7–8</button>
+  <div style="padding:0 16px 10px">
+    <div style="font-size:11px;color:var(--text3);margin-bottom:6px;font-weight:600;text-transform:uppercase;letter-spacing:.06em">Fase</div>
+    <div style="display:flex;gap:6px;overflow-x:auto;padding-bottom:4px" id="fase-btns"></div>
   </div>
-
-  <!-- Bloque desc -->
-  <div class="card card-sm" id="bloque-desc-card" style="margin-bottom:14px"></div>
-
-  <!-- Día selector -->
-  <div style="display:flex;gap:6px;padding:0 16px 14px">
-    <button class="btn btn-green btn-sm" id="dia-0" onclick="setDia(0)" style="width:auto;flex:1">Día 1</button>
-    <button class="btn btn-ghost btn-sm" id="dia-1" onclick="setDia(1)" style="width:auto;flex:1">Día 2</button>
-    <button class="btn btn-ghost btn-sm" id="dia-2" onclick="setDia(2)" style="width:auto;flex:1">Día 3</button>
-    <button class="btn btn-ghost btn-sm" id="dia-3" onclick="setDia(3)" style="width:auto;flex:1">Día 4</button>
+  <div class="card card-sm" id="bloque-desc-card" style="margin-bottom:10px"></div>
+  <div style="padding:0 16px 10px">
+    <div style="font-size:11px;color:var(--text3);margin-bottom:6px;font-weight:600;text-transform:uppercase;letter-spacing:.06em">Día</div>
+    <div style="display:flex;gap:6px">
+      <button class="btn btn-green btn-sm" id="dia-0" onclick="setDia(0)" style="flex:1;width:auto">Día 1</button>
+      <button class="btn btn-ghost btn-sm" id="dia-1" onclick="setDia(1)" style="flex:1;width:auto">Día 2</button>
+      <button class="btn btn-ghost btn-sm" id="dia-2" onclick="setDia(2)" style="flex:1;width:auto">Día 3</button>
+      <button class="btn btn-ghost btn-sm" id="dia-3" onclick="setDia(3)" style="flex:1;width:auto">Día 4</button>
+    </div>
   </div>
-
-  <!-- Rutina content -->
   <div class="card" id="rutina-content"></div>
-
-  <!-- Registrar sesión -->
   <div class="card" style="margin-top:4px">
-    <div class="card-title">Registrar esta sesión</div>
+    <div class="card-title">Registrar sesión</div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px">
       <div><label>Duración (min)</label><input type="number" id="sess-dur" placeholder="30"></div>
       <div><label>Sensación</label>
-        <select id="sess-feel" style="background:var(--bg3);border:0.5px solid var(--border2);border-radius:var(--radius-sm);padding:11px 10px;color:var(--text);font-family:var(--font);font-size:14px;width:100%;outline:none;appearance:none">
+        <select id="sess-feel">
           <option value="5">💪 Excelente</option>
-          <option value="4">😊 Bien</option>
+          <option value="4" selected>😊 Bien</option>
           <option value="3">😐 Regular</option>
           <option value="2">😓 Difícil</option>
           <option value="1">😩 Muy difícil</option>
         </select>
       </div>
     </div>
-    <div style="margin-bottom:10px"><label>Notas (opcional)</label><input type="text" id="sess-notes" placeholder="Ej: aumenté reps en sentadillas"></div>
+    <div style="margin-bottom:10px"><label>Notas</label><input type="text" id="sess-notes" placeholder="opcional"></div>
     <button class="btn btn-green" onclick="saveSession()">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16"><polyline points="20 6 9 17 4 12"/></svg>
-      Guardar sesión completada
+      Guardar sesión
     </button>
   </div>
   <div style="height:8px"></div>
 </div>
 
-<!-- ══════════ SCREEN: SEGUIMIENTO ══════════ -->
+<!-- SEGUIMIENTO -->
 <div class="screen" id="s-track">
   <div class="page-header">
     <div class="page-title">Seguimiento</div>
-    <div class="page-sub">Historial y estadísticas</div>
+    <div class="page-sub">Estadísticas y progreso</div>
   </div>
-
-  <!-- Stats rápidas -->
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 16px 12px">
-    <div class="card card-sm" style="margin:0">
-      <div class="stat-label">Sesiones totales</div>
-      <div class="stat-num" id="stat-sessions">0</div>
-    </div>
-    <div class="card card-sm" style="margin:0">
-      <div class="stat-label">Semana actual</div>
-      <div class="stat-num" id="stat-week">—</div>
-    </div>
-    <div class="card card-sm" style="margin:0">
-      <div class="stat-label">Minutos totales</div>
-      <div class="stat-num" id="stat-mins">0</div>
-    </div>
-    <div class="card card-sm" style="margin:0">
-      <div class="stat-label">Racha actual</div>
-      <div class="stat-num" id="stat-streak">0 <span style="font-size:14px">días</span></div>
-    </div>
+    <div class="card card-sm" style="margin:0"><div class="stat-label">Sesiones totales</div><div class="stat-num" id="stat-sessions">0</div></div>
+    <div class="card card-sm" style="margin:0"><div class="stat-label">Semana actual</div><div class="stat-num" id="stat-week">—</div></div>
+    <div class="card card-sm" style="margin:0"><div class="stat-label">Minutos totales</div><div class="stat-num" id="stat-mins">0</div></div>
+    <div class="card card-sm" style="margin:0"><div class="stat-label">Racha hábitos</div><div class="stat-num" id="stat-streak">0 <span style="font-size:13px">días</span></div></div>
   </div>
-
-  <!-- Peso -->
   <div class="card">
     <div class="card-title">Control de peso</div>
-    <div class="row" style="gap:8px;margin-bottom:14px">
+    <div style="display:flex;gap:8px;margin-bottom:14px">
       <input type="number" id="weight-input" placeholder="kg" step="0.1" style="flex:1">
-      <input type="text" id="weight-date" placeholder="Fecha (auto)" style="flex:1;max-width:130px">
       <button class="btn btn-primary btn-sm" style="width:auto;padding:11px 14px" onclick="saveWeight()">+</button>
     </div>
-    <div id="weight-chart-wrap">
-      <svg id="weight-chart" width="100%" height="140" viewBox="0 0 320 140"></svg>
-    </div>
+    <svg id="weight-chart" width="100%" height="140" viewBox="0 0 320 140" style="overflow:visible"></svg>
     <div id="weight-stats" style="display:flex;gap:16px;margin-top:10px;flex-wrap:wrap"></div>
   </div>
-
-  <!-- Test AMRAP -->
   <div class="card">
-    <div class="card-title">Resultados test AMRAP / Fuerza</div>
+    <div class="card-title">Test de referencia (Sem 7–8)</div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
-      <div><label>Fecha del test</label><input type="text" id="test-date" placeholder="hoy"></div>
-      <div><label>Rondas AMRAP</label><input type="number" id="test-amrap" placeholder="rondas"></div>
       <div><label>Flexiones máx.</label><input type="number" id="test-pushups" placeholder="reps"></div>
       <div><label>Plancha máx. (seg)</label><input type="number" id="test-plank" placeholder="seg"></div>
+      <div><label>Sentadillas 1 min</label><input type="number" id="test-squats" placeholder="reps"></div>
+      <div><label>Fecha</label><input type="text" id="test-date" placeholder="hoy"></div>
     </div>
     <button class="btn btn-ghost btn-sm" onclick="saveTest()">Guardar test</button>
     <div id="test-history" style="margin-top:12px"></div>
   </div>
-
-  <!-- Historial sesiones -->
   <div class="card">
     <div class="card-title">Historial de sesiones</div>
     <div id="sessions-history"></div>
@@ -323,339 +244,501 @@ label{font-size:12px;color:var(--text2);margin-bottom:5px;display:block;font-wei
   <div style="height:8px"></div>
 </div>
 
-<!-- ══════════ SCREEN: AJUSTES ══════════ -->
+<!-- AJUSTES -->
 <div class="screen" id="s-settings">
   <div class="page-header">
     <div class="page-title">Ajustes</div>
-    <div class="page-sub">Personalización del plan</div>
+    <div class="page-sub">Perfil y configuración</div>
   </div>
-
   <div class="card">
     <div class="card-title">Perfil</div>
     <div style="display:grid;gap:10px">
       <div><label>Nombre</label><input type="text" id="set-name" placeholder="Tu nombre"></div>
-      <div><label>Fecha de inicio del programa</label><input type="text" id="set-start" placeholder="YYYY-MM-DD"></div>
+      <div><label>Fecha de inicio (YYYY-MM-DD)</label><input type="text" id="set-start" placeholder="2026-03-19"></div>
       <div><label>Peso inicial (kg)</label><input type="number" id="set-weight" placeholder="kg" step="0.1"></div>
-      <div><label>Objetivo de peso (kg)</label><input type="number" id="set-goal-weight" placeholder="kg" step="0.1"></div>
+      <div><label>Objetivo de peso (kg)</label><input type="number" id="set-goal" placeholder="kg" step="0.1"></div>
       <button class="btn btn-primary" onclick="saveSettings()">Guardar perfil</button>
     </div>
   </div>
-
-  <div class="card">
-    <div class="card-title">Días de entrenamiento</div>
-    <div style="font-size:13px;color:var(--text2);margin-bottom:10px">¿Qué días entrenas normalmente? (semanas 1–8)</div>
-    <div id="days-picker" style="display:flex;gap:6px;flex-wrap:wrap"></div>
-  </div>
-
   <div class="card">
     <div class="card-title">Datos</div>
     <div style="display:grid;gap:8px">
-      <button class="btn btn-ghost btn-sm" onclick="exportData()">Exportar datos (JSON)</button>
-      <button class="btn btn-ghost btn-sm" onclick="if(confirm('¿Seguro? Esto borra todo el historial.'))resetData()">Resetear historial</button>
+      <button class="btn btn-ghost btn-sm" onclick="importData()">Importar backup JSON</button>
+      <button class="btn btn-ghost btn-sm" onclick="exportData()">Exportar backup JSON</button>
+      <input type="file" id="import-file" accept=".json" style="display:none" onchange="loadImport(event)">
+      <button class="btn btn-ghost btn-sm" style="color:var(--red)" onclick="if(confirm('¿Borrar todo el historial?'))resetData()">Resetear historial</button>
     </div>
   </div>
-
   <div class="card">
     <div class="card-title">Acerca de</div>
-    <div style="font-size:13px;color:var(--text2);line-height:1.7">
-      Plan personal de salud y bienestar — 6 meses<br>
-      Semanas 1–8 detalladas · Semanas 9–26 próximamente<br>
-      <span style="color:var(--text3);font-size:12px">v1.0 · Los datos se guardan en tu dispositivo</span>
+    <div style="font-size:13px;color:var(--text2);line-height:1.8">
+      Plan personal de salud · 26 semanas<br>
+      4 días/semana · progresión gradual<br>
+      <span style="color:var(--text3);font-size:11px">v2.1 · 13 bloques · Datos en tu dispositivo</span>
     </div>
   </div>
   <div style="height:8px"></div>
 </div>
 
-<!-- ══════════ BOTTOM NAV ══════════ -->
 <nav id="nav">
   <button class="nav-btn active" id="nav-home" onclick="showScreen('home')">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-    Inicio
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Inicio
   </button>
   <button class="nav-btn" id="nav-plan" onclick="showScreen('plan')">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-    Plan
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Plan
   </button>
   <button class="nav-btn" id="nav-routines" onclick="showScreen('routines')">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-    Rutinas
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Rutinas
   </button>
   <button class="nav-btn" id="nav-track" onclick="showScreen('track')">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-    Seguimiento
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Progreso
   </button>
   <button class="nav-btn" id="nav-settings" onclick="showScreen('settings')">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-    Ajustes
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>Ajustes
   </button>
 </nav>
 </div>
 
 <script>
-// ══════════════════════════════════════════════════════
-// DATA
-// ══════════════════════════════════════════════════════
-const HABITOS = [
-  "30 min de movimiento",
-  "2 litros de agua",
-  "Verdura en cada comida",
-  "10 min meditación",
-  "Dormir 7–8 horas",
-  "Sin pantallas 1h antes de dormir",
-  "Caminar 8.000 pasos",
-  "Momento de gratitud"
+// ═══════════════════════════════════════════════════════
+// HELPERS
+// ═══════════════════════════════════════════════════════
+function yt(q){return 'https://www.youtube.com/results?search_query='+encodeURIComponent(q+' ejercicio como hacer');}
+
+function links(name){
+  return `<div class="ex-links">
+    <a class="ex-link ex-link-yt" href="${yt(name)}" target="_blank">▶ Ver vídeo en YouTube</a>
+  </div>`;}
+
+// ═══════════════════════════════════════════════════════
+// DATA — HABITOS
+// ═══════════════════════════════════════════════════════
+const HABITOS=['30 min de movimiento','2 litros de agua','Verdura en cada comida','10 min meditación','Dormir 7–8 horas','Sin pantallas 1h antes de dormir','Caminar 8.000 pasos','Momento de gratitud'];
+
+// ═══════════════════════════════════════════════════════
+// DATA — PLAN GENERAL
+// ═══════════════════════════════════════════════════════
+const FASES=[
+  {n:'Fase 1',s:'1–6',col:'blue',dias:4,mins:30,equipo:'Peso corporal · Balón 5 kg · Mancuernas 1+5 kg',desc:'Base y aprendizaje. Técnica correcta en todos los ejercicios. Sin agobios de intensidad.'},
+  {n:'Fase 2',s:'7–12',col:'green',dias:4,mins:32,equipo:'+ Banda elástica ligera (5–10 kg)',desc:'Introduce la banda ligera. Aumenta ligeramente el volumen y reduce descansos.'},
+  {n:'Fase 3',s:'13–18',col:'amber',dias:4,mins:35,equipo:'+ Banda media (10–20 kg) · Opcional mancuernas 8 kg',desc:'Mayor resistencia con la banda media. Variantes más exigentes de los ejercicios base.'},
+  {n:'Fase 4',s:'19–26',col:'purple',dias:4,mins:38,equipo:'+ Banda fuerte (20–35 kg) · Opcional mancuernas 10 kg',desc:'Consolidación. Alta exigencia técnica. Automatización de todos los hábitos.'},
 ];
 
-const FASES = [
-  {n:"Fase 1",s:"1–8",d:4,m:30,foco:"Calistenia base + balón medicinal",col:"blue",desc:"Aprende la técnica. Constancia sobre intensidad."},
-  {n:"Fase 2",s:"9–12",d:5,m:33,foco:"Introducción de bandas elásticas",col:"green",desc:"Sube a 5 días. Incorpora banda ligera y media."},
-  {n:"Fase 3",s:"13–16",d:6,m:36,foco:"Alta frecuencia + banda fuerte",col:"green",desc:"6 días/sem. Añade banda fuerte, mayor volumen."},
-  {n:"Fase 4",s:"17–20",d:7,m:38,foco:"7 días/semana — ritmo completo",col:"amber",desc:"1 día de recuperación activa. Máximo uso del equipo."},
-  {n:"Fase 5",s:"21–24",d:7,m:39,foco:"Refinamiento y pruebas de fuerza",col:"purple",desc:"Tests de fuerza cada 4 semanas. Ajuste de puntos débiles."},
-  {n:"Fase 6",s:"25–26",d:7,m:40,foco:"Consolidación — estilo de vida",col:"blue",desc:"40 min mañana, 60 min caminata tarde. Evaluación final."}
+const PROG=[
+  {s:'1–2',d:4,m:30,f:'Técnica base · peso corporal'},
+  {s:'3–4',d:4,m:30,f:'Volumen base · 3 series'},
+  {s:'5–6',d:4,m:30,f:'Variantes suaves · balón y mancuernas'},
+  {s:'7–8',d:4,m:32,f:'Introduce banda ligera'},
+  {s:'9–10',d:4,m:32,f:'Más reps con banda ligera'},
+  {s:'11–12',d:4,m:32,f:'Circuitos suaves · descansos menores'},
+  {s:'13–14',d:4,m:35,f:'Banda media · variantes intermedias'},
+  {s:'15–16',d:4,m:35,f:'Mayor carga · menos descanso'},
+  {s:'17–18',d:4,m:35,f:'Combinaciones y superseries'},
+  {s:'19–20',d:4,m:38,f:'Banda fuerte · alta resistencia'},
+  {s:'21–22',d:4,m:38,f:'Tests de fuerza · ajuste de cargas'},
+  {s:'23–24',d:4,m:38,f:'Máxima intensidad técnica'},
+  {s:'25–26',d:4,m:38,f:'Consolidación · estilo de vida'},
 ];
 
-const PROG = [
-  {s:"1–2",d:4,m:30,f:"Técnica base"},{s:"3–4",d:4,m:30,f:"Volumen base"},
-  {s:"5–6",d:4,m:30,f:"Dificultad técnica"},{s:"7–8",d:4,m:30,f:"Máx. intensidad bloque 1"},
-  {s:"9–10",d:5,m:33,f:"Bandas ligera+media"},{s:"11–12",d:5,m:33,f:"Volumen aumentado"},
-  {s:"13–14",d:6,m:36,f:"Banda fuerte"},{s:"15–16",d:6,m:36,f:"Alta frecuencia"},
-  {s:"17–18",d:7,m:38,f:"7 días/semana"},{s:"19–20",d:7,m:38,f:"Recuperación activa"},
-  {s:"21–22",d:7,m:39,f:"Tests de fuerza"},{s:"23–24",d:7,m:39,f:"Ajuste puntos débiles"},
-  {s:"25–26",d:7,m:40,f:"Estilo de vida"}
+const EQUIPO=[
+  {when:'Desde semana 1',items:'Peso corporal · Balón medicinal 5 kg · Mancuernas 1 kg · Mancuernas 5 kg',col:'blue'},
+  {when:'Añadir en semana 7',items:'Banda elástica ligera (5–10 kg resistencia) — ~10–15 EUR',col:'green'},
+  {when:'Añadir en semana 13',items:'Banda elástica media (10–20 kg) · Opcional mancuernas 8 kg',col:'amber'},
+  {when:'Añadir en semana 19',items:'Banda elástica fuerte (20–35 kg) · Opcional mancuernas 10 kg',col:'purple'},
 ];
 
-const EQUIPO = [
-  {when:"Desde semana 1",items:"Balón medicinal 5 kg · Mancuernas 1 kg · Mancuernas 5 kg",col:"blue"},
-  {when:"Añadir en semana 9",items:"Banda elástica ligera (5–10 kg) · Banda media (10–20 kg)",col:"green"},
-  {when:"Añadir en semana 13",items:"Banda fuerte (20–35 kg) · Opcional: mancuernas 8–10 kg",col:"amber"}
+// ═══════════════════════════════════════════════════════
+// DATA — RUTINAS 26 SEMANAS (4 fases × 4 días)
+// Nota: cada fase cubre ~6 semanas con progresión interna
+// ═══════════════════════════════════════════════════════
+
+// Helpers para construir ejercicios
+function ex(n,s,d,c){return {n,s,d,c};}
+
+// FASE 1 (Sem 1–6): Base y técnica, 4 días, 30 min
+// Sem 1-2: aprender movimientos, 3 series cortas
+// Sem 3-4: subir reps, mismos movimientos  
+// Sem 5-6: introducir variantes suaves con balón y mancuernas
+
+const F1D1_12=[  // Piernas y Glúteos
+  ex('Sentadilla con peso corporal','3×12','Pies al ancho de hombros, baja hasta muslos paralelos. Rodillas alineadas con pies, talones en el suelo. Sube empujando desde los talones.','Mantén el pecho erguido todo el tiempo'),
+  ex('Zancada estática (lunge)','3×10/pierna','Paso adelante amplio, baja la rodilla trasera casi al suelo. Tronco recto. Vuelve al centro.','Contrae el glúteo de la pierna trasera al subir'),
+  ex('Puente de glúteos','3×15','Tumbado, rodillas dobladas, pies planos. Eleva caderas contrayendo glúteos. Aguanta 1 seg arriba.','Aprieta fuerte los glúteos en la posición alta'),
+  ex('Sentadilla sumo','3×12','Pies más separados que hombros, puntas hacia fuera 45°. Baja con rodillas alineadas con los pies.','Activa el interior del muslo en la subida'),
+  ex('Elevación de talones','3×20','De pie, sube de puntillas lo más alto posible, baja lento controlando el descenso.','Controla la bajada — no caigas'),
+];
+const F1D2_12=[  // Abdomen y Core
+  ex('Plancha frontal','3×20 seg','Apoyado en antebrazos y puntas de pies. Cuerpo recto. No dejes caer las caderas.','Para si falla la forma — calidad sobre tiempo'),
+  ex('Crunch clásico','3×15','Tumbado, rodillas dobladas. Contrae el abdomen y eleva solo los hombros. No tires del cuello.','El movimiento es corto, no un sit-up completo'),
+  ex('Plancha lateral','3×15 seg/lado','Apoyado en antebrazo y borde del pie. Cuerpo en línea recta lateral. Cadera arriba.','Activa el oblicuo lateral — muy funcional'),
+  ex('Hollow Body Hold','3×20 seg','Tumbado, brazos extendidos arriba, eleva ligeramente piernas y hombros. Espalda baja pegada al suelo.','Ejercicio fundamental de core — precursor de movimientos avanzados'),
+  ex('Superman','3×12','Boca abajo, brazos extendidos. Eleva simultáneamente brazos y piernas. Aguanta 2 seg.','Fortalece la cadena posterior — clave para la postura'),
+];
+const F1D3_12=[  // Brazos y Hombros
+  ex('Press de hombros · mancuernas 5 kg','3×12','Sentado o de pie, mancuernas a altura de orejas, palmas al frente. Empuja hacia arriba. Baja lento.','No arquees la espalda baja al subir'),
+  ex('Curl de bíceps · mancuernas 5 kg','3×12','De pie, brazos pegados al cuerpo. Dobla el codo llevando la mancuerna al hombro. Baja en 3 seg.','El codo no se mueve — es el único punto fijo'),
+  ex('Elevaciones laterales · mancuernas 1 kg','3×15','De pie, brazos ligeramente doblados. Sube lateralmente hasta la altura del hombro. Baja controlando.','1 kg parece poco pero en 15 reps quema bien'),
+  ex('Flexiones (push-ups)','3×8','Manos al ancho de hombros, cuerpo recto. Baja el pecho al suelo doblando codos a 45°. Si no puedes, con rodillas.','El pecho debe casi tocar el suelo'),
+  ex('Extensión de tríceps sobre cabeza · 5 kg','3×12','De pie, sujeta la mancuerna con ambas manos sobre la cabeza. Dobla los codos hacia atrás, extiende hacia arriba.','Los codos apuntan al techo — no los dejes abrir'),
+];
+const F1D4_12=[  // Full body con balón
+  ex('Sentadilla con balón al pecho','3×12','Sostén el balón al pecho con ambas manos. Sentadilla completa. El balón activa más el core.','El peso te obliga a mantener el pecho erguido'),
+  ex('Press de pecho con balón en suelo','3×12','Tumbado boca arriba, balón sobre el pecho, empuja hacia arriba extendiendo los brazos. Baja lento.','Alternativa al press de banca — muy efectivo'),
+  ex('Rotación de tronco con balón','3×12/lado','Sentado en suelo, piernas ligeramente elevadas, sostén el balón y rótalo de lado a lado tocando el suelo.','Lento y controlado — tensión, no velocidad'),
+  ex('Elevación de rodillas al pecho en suelo','3×12','Tumbado, manos bajo glúteos, eleva ambas rodillas al pecho y vuelve sin tocar el suelo.','No balancees — movimiento lento y controlado'),
+  ex('Lunge con balón al pecho','3×10/pierna','Sostén el balón al pecho y haz zancadas adelante. El balón añade dificultad de equilibrio y core.','Si inestable, haz las zancadas primero sin balón'),
 ];
 
+// Sem 3-4: más volumen
+const F1D1_34=[ 
+  ex('Sentadilla con peso corporal','4×15','Igual que sem 1–2 pero más reps. Reduce descanso a 50 seg entre series. La última serie debe costarte.','Añade pausa de 2 seg abajo si te sobra energía'),
+  ex('Zancada caminando','3×12/pierna','Avanza con cada zancada por el espacio. Más dinámico que la estática.','Mantén el tronco erguido y el paso largo'),
+  ex('Puente de glúteos a una pierna','3×12/pierna','Como el puente normal pero con una pierna extendida en el aire.','No dejes caer la cadera del lado elevado'),
+  ex('Sentadilla sumo · mancuerna 5 kg','4×12','Sujeta una mancuerna de 5 kg con ambas manos entre las piernas. Sumo con carga.','La mancuerna te ayuda a mantener el torso recto'),
+  ex('Elevación de pierna lateral en suelo','3×15/pierna','De lado, eleva la pierna superior lo más alto posible y baja lento. Glúteo medio.','No gires la cadera — movimiento puro lateral'),
+];
+const F1D2_34=[
+  ex('Plancha frontal','4×25 seg','Misma ejecución, 25 seg y 4 series. Descansa 45 seg entre series.','Si flaqueas en la forma, reduce el tiempo'),
+  ex('Crunch con balón medicinal','3×15','Crunch clásico sosteniendo el balón de 5 kg sobre el pecho. Más carga abdominal.','No uses el impulso del balón — contrae el abdomen'),
+  ex('Plancha lateral con elevación de cadera','3×12/lado','En posición de plancha lateral, baja la cadera casi al suelo y súbela de nuevo.','El oblicuo trabaja en todo el rango'),
+  ex('Hollow Body Hold','4×25 seg','Como sem 1–2 pero aguanta 5 seg más. Busca la tensión del core, no la velocidad.','Espalda baja pegada al suelo en todo momento'),
+  ex('Tijeras','3×15/pierna','Tumbado, pies a 10 cm del suelo. Alterna subiendo una pierna y bajando la otra.','Espalda baja pegada al suelo siempre'),
+];
+const F1D3_34=[
+  ex('Press de hombros · 5 kg','4×12','4 series con descanso de 50 seg. Busca la fatiga en la última serie.','Sube el peso solo si puedes mantener la forma'),
+  ex('Curl martillo · mancuernas 5 kg','3×12','Como el curl de bíceps pero con palmas mirándose (posición martillo). Trabaja braquial.','Complementa el curl clásico para bíceps completo'),
+  ex('Elevaciones frontales · 1 kg','3×15','De pie, sube los brazos hacia el frente hasta la altura del hombro, alternando.','1 kg parece poco pero en 15 reps es suficiente'),
+  ex('Flexiones diamante','3×8','Manos juntas formando un triángulo bajo el pecho. Flexiona los codos hacia atrás.','Si es difícil, hazlas con rodillas en el suelo'),
+  ex('Press Arnold · mancuernas 5 kg','3×12','Empieza con palmas hacia ti al nivel del pecho. Al subir gira las muñecas. Trabaja los 3 haces del deltoides.','El giro es lo que hace especial este ejercicio'),
+];
+const F1D4_34=[
+  ex('Sentadilla a press con balón','3×12','Sentadilla con balón al pecho. Al subir, empuja el balón sobre la cabeza.','Combina piernas y hombros en un solo movimiento'),
+  ex('Press de pecho con balón · variante lenta','3×12','Press de pecho en suelo pero con 3 seg de bajada y 1 seg de pausa en el pecho. Mayor activación.','La lentitud es la nueva dificultad'),
+  ex('Rotación con balón de pie','3×15/lado','De pie, balón a la altura del pecho. Rota el tronco a un lado lo más posible.','Los pies no se mueven — la rotación es del tronco'),
+  ex('Mountain climbers','3×20 total','En posición de plancha alta, lleva alternadamente cada rodilla hacia el pecho.','Cardio + core — mantén la cadera alineada'),
+  ex('Sentadilla búlgara suave','3×10/pierna','Pie trasero apoyado en silla, pie delantero adelantado. Baja sin mancuerna aún.','Aprende el movimiento antes de añadir carga'),
+];
+
+// Sem 5-6: variantes con más carga, misma estructura
+const F1D1_56=[
+  ex('Sentadilla búlgara · mancuerna 5 kg','3×10/pierna','Pie trasero en silla, mancuerna en la mano. Baja la rodilla trasera al suelo.','Empieza sin peso si hay desequilibrio — técnica primero'),
+  ex('Sentadilla con pausa (3 seg)','4×10','Sentadilla normal pero aguanta 3 seg abajo antes de subir. Elimina el rebote.','La pausa maximiza el trabajo sin más peso'),
+  ex('Hip thrust con balón','4×15','Hombros sobre cama o sofá, balón sobre las caderas. Mayor rango que el puente en suelo.','Máxima contracción del glúteo arriba en cada rep'),
+  ex('Zancada reversa · mancuerna 5 kg','3×10/pierna','Paso hacia atrás en vez de adelante. Menos estrés en la rodilla.','Ideal si las zancadas adelante te molestan la rodilla'),
+  ex('Elevación lateral de pierna de pie · banda 0','3×15/pierna','De pie, eleva la pierna lateral contra la resistencia de la posición. Preparación para la banda.','Activa el glúteo medio — esencial para la estabilidad'),
+];
+const F1D2_56=[
+  ex('Plancha con elevación de brazo','3×10/brazo','En plancha alta, eleva un brazo al frente 2 seg sin rotar la cadera. Alterna.','La cadera no rota ni sube — eso es la clave'),
+  ex('Crunch bicicleta','3×20 total','Lleva el codo derecho hacia la rodilla izquierda mientras extiendes la derecha. Alterna.','Lento y controlado — no es velocidad, es tensión'),
+  ex('Plancha con toque de hombros','3×16 total','En plancha alta, toca el hombro contrario alternando. Cadera estable.','Pies más separados dan más estabilidad al inicio'),
+  ex('Hollow Body Hold · progresión','4×25 seg','Ahora con los brazos extendidos paralelos al suelo (más difícil). Si no puedes, brazos al pecho.','Progresión natural desde la versión básica'),
+  ex('Elevación de rodillas colgado (o silla)','3×10','Sentado al borde de la silla, manos al costado, eleva ambas rodillas al pecho. Aguanta 2 seg.','Alternativa al L-sit — construye la misma fuerza'),
+];
+const F1D3_56=[
+  ex('Press de hombros con balón de pie','3×12','De pie, sostén el balón sobre la cabeza con ambas manos y bájalo al pecho. El balón es inestable.','Activa más músculos estabilizadores que las mancuernas'),
+  ex('Curl de bíceps concentrado · 5 kg','3×12/brazo','Sentado, codo apoyado en el muslo interior. Curl lento en 3 seg de bajada.','El apoyo elimina el trampa con el cuerpo'),
+  ex('Flexiones con pies elevados','3×8','Pies en la cama o silla. La inclinación carga más el deltoides anterior y pecho superior.','Vuelve a las normales si falla la forma'),
+  ex('Remo con mancuerna · 5 kg','3×12/brazo','Apoyado en rodilla y mano en la cama, espalda paralela. Tira la mancuerna hacia la cadera.','El codo va hacia arriba y atrás, no hacia el lado'),
+  ex('Extensión de tríceps · pausa · 5 kg','3×12','Press francés sobre cabeza con pausa de 2 seg arriba y 2 seg abajo.','Las pausas eliminan el impulso y aumentan el trabajo'),
+];
+const F1D4_56=[
+  ex('Circuito: Sentadilla + press de pecho','3 rondas · 12+12','12 sentadillas con balón + 12 press de pecho en suelo. Sin descanso entre ejercicios, 60 seg entre rondas.','Cardio + fuerza en el mismo circuito'),
+  ex('Circuito: Lunge + press Arnold','3 rondas · 10+12','10 zancadas (5/pierna) + 12 press Arnold con 5 kg. Sin descanso interno.','Mantén la forma aunque llegues fatigado'),
+  ex('Circuito: Plancha + mountain climber','3 rondas · 25s+20','25 seg de plancha + 20 mountain climbers. Sin descanso interno.','Core activo en ambos ejercicios'),
+  ex('Test: Flexiones máximas (sem 6)','1 serie al fallo','Máximo de flexiones correctas sin parar. Anota el número — es tu referencia inicial.','Compararás este número en sem 13 y sem 26'),
+  ex('Estiramiento final completo','5 min','Cuádriceps 40s, isquiotibiales 40s, pectoral 40s, hombros 40s, espalda baja 40s, gemelos 40s.','No lo saltes — acelera la recuperación'),
+];
+
+// FASE 2 (Sem 7–12): Introduce banda ligera, 4 días, 32 min
+const F2D1=[
+  ex('Sentadilla con banda ligera','4×15','Coloca la banda sobre las rodillas. La resistencia te obliga a mantener las rodillas hacia fuera. Sentadilla completa.','La banda activa el glúteo medio de forma muy eficaz'),
+  ex('Hip thrust con balón · pausa','4×15','Hip thrust con balón y pausa de 2 seg arriba. Mayor tiempo bajo tensión.','El glúteo no se relaja en ningún momento de la serie'),
+  ex('Sentadilla búlgara · 2 mancuernas 5 kg','3×10/pierna','Una mancuerna en cada mano, pie trasero elevado. La variante más exigente de la sentadilla búlgara.','Si falla la forma, vuelve a una sola mancuerna'),
+  ex('Abducción de cadera con banda · de pie','3×15/pierna','De pie, banda sobre los tobillos. Eleva la pierna lateral contra la resistencia de la banda.','Mantén el torso erguido — no te inclines'),
+  ex('Elevación de talones · carga · 5 kg','3×20','Igual que sem 1–6 pero sosteniendo una mancuerna de 5 kg en cada mano.','Controla la bajada — 2 seg de descenso'),
+];
+const F2D2=[
+  ex('Plancha con remo · mancuerna 5 kg','3×10/brazo','En plancha alta con mancuerna en el suelo. Tira la mancuerna hacia la cadera manteniendo la plancha.','La cadera no rota al tirar — ese es el verdadero desafío'),
+  ex('Crunch bicicleta con balón','3×15/lado','Crunch bicicleta sosteniendo el balón entre las manos. Lleva el balón hacia la rodilla que sube.','Más peso, más activación del oblicuo'),
+  ex('Hollow Body Hold · progresión 2','4×30 seg','Brazos extendidos paralelos al suelo, piernas más bajas (más difícil). Si fallas, dobla las rodillas.','Busca la tensión máxima del core sin dolor lumbar'),
+  ex('Plancha lateral · elevación de cadera','3×12/lado','En plancha lateral, baja la cadera casi al suelo y súbela. El oblicuo trabaja en todo el rango.','Movimiento controlado — no rebotar'),
+  ex('Elevación de rodillas en silla · carga','3×12','Al borde de la silla, eleva ambas rodillas con 2 seg de aguante. Añade peso en los tobillos si tienes.','Progresión del ejercicio de sem 5–6'),
+];
+const F2D3=[
+  ex('Press de hombros · banda ligera','3×15','De pie, pisa la banda con ambos pies, sujeta los extremos. Press hacia arriba. La resistencia aumenta al subir.','La banda da máxima resistencia en la posición extendida'),
+  ex('Curl de bíceps · banda ligera','3×15','Pisa la banda, sujeta los extremos. Curl de bíceps. La banda resiste más arriba que abajo.','Combina con curl de mancuernas para mayor variedad'),
+  ex('Flexiones con palmada (suave)','3×6','Flexión explosiva para despegar brevemente las manos. Si no hay explosividad, vuelve a las normales.','Solo si la forma es perfecta en flexiones normales'),
+  ex('Remo con banda ligera','3×15','De pie, pisa la banda con ambos pies, inclínate hacia adelante. Tira los extremos hacia las caderas.','El codo va hacia atrás — como remar un kayak'),
+  ex('Extensión de tríceps · banda ligera','3×15','Sujeta la banda sobre la cabeza. Extiende los codos hacia arriba. La banda resiste en la extensión.','Codos fijos — solo se mueve el antebrazo'),
+];
+const F2D4=[
+  ex('Circuito: Sentadilla con banda + lunge','3 rondas · 15+10','15 sentadillas con banda en rodillas + 10 zancadas caminando. 60 seg de descanso.','La banda en la sentadilla activa más el glúteo que sin ella'),
+  ex('Circuito: Press de pecho + remo balón','3 rondas · 12+12','12 press de pecho en suelo + 12 rotaciones con balón. 60 seg de descanso.','Empuje + tirón en el mismo circuito — equilibrio muscular'),
+  ex('Circuito: Plancha + hollow body','3 rondas · 30s+30s','30 seg de plancha frontal + 30 seg de hollow body hold. 45 seg de descanso.','El core trabaja de forma diferente en cada posición'),
+  ex('Cardio activo: marcha rápida en sitio','8 min','Camina en sitio elevando las rodillas, alternando con jumping jacks suaves. Mantén el ritmo.','Sustituto del slam y los burpees — mismo efecto cardiovascular'),
+  ex('Estiramiento final completo','5 min','Todos los grupos: cuádriceps, isquiotibiales, pectoral, hombros, espalda, gemelos. 40 seg cada uno.','Siempre al final — nunca en frío'),
+];
+
+// FASE 3 (Sem 13–18): Banda media, variantes intermedias, 35 min
+const F3D1=[
+  ex('Sentadilla con banda media','4×15','Banda media sobre las rodillas. Mayor resistencia que la ligera. La activación del glúteo medio es máxima.','Si las rodillas caen hacia dentro, reduce la resistencia de la banda'),
+  ex('Hip thrust con banda media + balón','4×15','Balón sobre las caderas y banda media sobre los muslos. Doble activación del glúteo.','La banda evita que las rodillas colapsen en el movimiento'),
+  ex('Sentadilla búlgara · mancuernas 5+5 kg','4×10/pierna','2 mancuernas de 5 kg, pie trasero elevado. Pausa de 2 seg abajo.','La pausa elimina el rebote y maximiza el trabajo'),
+  ex('Peso muerto rumano · mancuernas 5+5 kg','3×12','De pie, mancuernas colgando al frente. Inclínate hacia adelante doblando ligeramente las rodillas hasta sentir el estiramiento del isquiotibial. Vuelve erguido.','La espalda recta en todo momento — la inclinación viene de la cadera'),
+  ex('Abducción con banda media · de pie','3×15/pierna','Como en fase 2 pero con banda media. Mayor resistencia lateral.','Controla el tempo — 2 seg de subida, 2 de bajada'),
+];
+const F3D2=[
+  ex('Plancha con remo · 5 kg · pausa','3×10/brazo','Plancha con remo pero aguanta 2 seg con el codo arriba antes de bajar. Mucho más exigente.','La pausa en la posición alta duplica el trabajo de espalda'),
+  ex('Crunch con balón · piernas elevadas','3×15','Tumbado, piernas elevadas a 90°. Sube el balón hacia los pies en cada crunch.','Las piernas elevadas eliminan la ayuda de los flexores de cadera'),
+  ex('Hollow Body Hold · nivel avanzado','4×30 seg','Brazos extendidos arriba, piernas rectas y bajas (sin tocar el suelo). Si fallas, dobla rodillas.','Este es el nivel final del hollow body — no hay más progresión'),
+  ex('Abs con balón entre piernas','3×12','Tumbado, balón entre los pies. Sube las piernas juntas hasta 90°, baja lento sin tocar el suelo.','Espalda baja pegada al suelo en todo momento'),
+  ex('Plancha lateral · mancuerna 5 kg · elevación','3×10/lado','En plancha lateral, sujeta la mancuerna con la mano libre. Eleva la mancuerna al techo (rotación externa).','Combina core lateral con hombro — muy eficiente'),
+];
+const F3D3=[
+  ex('Press de hombros · banda media','4×15','Pisa la banda media, sujeta los extremos. Press completo hacia arriba. Mayor resistencia que la ligera.','La banda da más resistencia cuanto más arriba subes'),
+  ex('Curl 21s · mancuernas 5 kg','3 series','7 reps rango inferior (0–90°), 7 reps rango superior (90°–arriba), 7 reps completas. 21 total.','No descanses entre los tres rangos de cada serie'),
+  ex('Flexiones · pausa en el pecho','3×10','Flexión normal pero aguanta 2 seg con el pecho a punto de tocar el suelo. Luego sube explosivo.','La pausa elimina el rebote y maximiza el trabajo en el pecho'),
+  ex('Remo con banda media','4×15','Mayor resistencia que la ligera. Mismo movimiento — el codo hacia atrás.','Progresión directa del remo con banda ligera'),
+  ex('Extensión de tríceps · banda media','3×15','Banda media sobre la cabeza. Codos fijos, extiende hacia arriba.','La banda media da mucho más trabajo que la ligera'),
+];
+const F3D4=[
+  ex('Superserie: Sentadilla + hip thrust','4 rondas · 12+15','12 sentadillas con banda + 15 hip thrust con balón. Sin descanso entre ejercicios, 60 seg entre rondas.','La superserie agota el glúteo de forma completa'),
+  ex('Superserie: Press + remo','4 rondas · 12+12','12 press de hombros con banda + 12 remo con banda. Sin descanso entre ejercicios.','Empuje y tirón — equilibrio entre pecho y espalda'),
+  ex('Cardio activo estructurado','10 min','2 min marcha rápida + 1 min sentadillas suaves + 1 min plancha. Repite 2,5 veces. Sin parar.','El objetivo es mantener el ritmo cardíaco elevado 10 min'),
+  ex('Test: Flexiones máximas (sem 14)','1 serie al fallo','Anota el número. Compara con tu test de sem 6.','La mejora es tu indicador real de progreso de fuerza'),
+  ex('Estiramiento + movilidad de cadera','7 min','Cuádriceps 45s, isquiotibiales 45s, paloma en suelo 60s/lado, rotación de cadera en suelo 45s/lado.','La paloma en suelo es esencial para quien entrena glúteos'),
+];
+
+// FASE 4 (Sem 19–26): Banda fuerte, consolidación, 38 min
+const F4D1=[
+  ex('Sentadilla con banda fuerte','4×15','Banda fuerte sobre las rodillas. La resistencia es considerable — el glúteo medio trabaja al máximo.','Si las rodillas caen, usa la banda media'),
+  ex('Hip thrust · banda fuerte + balón','4×15','El combo definitivo: balón de carga + banda fuerte. Glúteo al 100% en cada rep.','Pausa de 2 seg arriba para máxima contracción'),
+  ex('Peso muerto rumano · mancuernas 8–10 kg','4×12','Si tienes mancuernas de 8–10 kg, úsalas. Si no, 2× mancuernas 5 kg + balón en el pecho.','El peso mayor activa más la cadena posterior'),
+  ex('Sentadilla búlgara · mancuernas · pausa','4×10/pierna','Pausa de 3 seg abajo. El máximo de carga que puedas mantener con buena forma.','La pausa es la progresión — no el peso'),
+  ex('Abducción tumbado · banda fuerte','3×15/lado','Tumbado de lado, banda en los tobillos. Eleva la pierna superior. Máxima activación del glúteo medio.','Trabaja el rango completo — pierna a 45° del cuerpo'),
+];
+const F4D2=[
+  ex('Plancha con remo · 5 kg · lento','4×10/brazo','Plancha con remo, pausa 3 seg arriba, bajada en 3 seg. El tempo lento es la máxima dificultad.','El control del tempo es más exigente que más peso'),
+  ex('Crunch con balón · piernas extendidas','3×12','Piernas rectas y elevadas a 45°. Sube el balón hacia los pies. La versión más exigente del crunch.','Si es demasiado, dobla las rodillas a 90°'),
+  ex('Plancha lateral · mancuerna · rotación','3×10/lado','Plancha lateral con mancuerna. Lleva la mancuerna bajo el cuerpo y luego al techo. Rotación completa.','Trabaja el oblicuo en todo el rango de movimiento'),
+  ex('Hollow Body Hold · máximo','4×35 seg','La versión más difícil: piernas rectas y lo más bajas posible sin que la espalda baja se despegue.','Si la espalda baja se despega, sube las piernas'),
+  ex('Elevación de rodillas en silla · lento','3×12','Al borde de la silla, eleva las rodillas con 3 seg de subida, 3 de aguante, 3 de bajada.','El tempo lento hace que sea muy exigente'),
+];
+const F4D3=[
+  ex('Press de hombros · banda fuerte','4×15','La banda fuerte da máxima resistencia al final del recorrido. Muy exigente para el deltoides.','Combina con press de mancuernas para mayor volumen si quieres'),
+  ex('Curl de bíceps · 21s · banda fuerte','3 series','21 reps por series: rango inferior, superior y completo. Con banda fuerte el agotamiento es total.','Descansa 90 seg entre series — este ejercicio agota'),
+  ex('Flexiones · tempo 4-1-1','4×10','4 seg de bajada, 1 seg de pausa, 1 seg de subida. El tempo lento es el máximo reto.','4 seg de bajada parece poco pero transforma el ejercicio'),
+  ex('Remo con banda fuerte','4×15','La progresión final del remo con banda. Máxima resistencia en el tirón.','El codo hacia atrás y arriba — contrae la escápula al final'),
+  ex('Press francés a una mano · 5 kg','3×12/brazo','Tumbado, una mancuerna sobre la cabeza. Dobla el codo hacia la frente, extiende. Pausa en la extensión.','El codo apunta al techo en todo momento'),
+];
+const F4D4=[
+  ex('Superserie A: Sentadilla banda + hip thrust','4 rondas · 15+15','15 sentadillas con banda fuerte + 15 hip thrust con balón + banda. 60 seg de descanso.','El combo definitivo de glúteo y piernas'),
+  ex('Superserie B: Press + remo · banda fuerte','4 rondas · 15+15','15 press de hombros + 15 remo. Sin descanso entre ejercicios. 60 seg entre rondas.','Equilibrio muscular empuje-tirón — clave para la postura'),
+  ex('Cardio activo · 12 min','12 min continuos','3 min marcha + 1 min sentadillas + 1 min plancha + 1 min marcha. Repite. Sin parar.','En sem 25–26 habrás automatizado este circuito'),
+  ex('Test final: Flexiones + plancha + sentadillas','1 serie cada uno al fallo','Flexiones máximas, plancha máxima (segundos), sentadillas en 1 min. Anota todo.','Compara con sem 6 y sem 14 — esta es tu transformación'),
+  ex('Estiramiento final profundo','10 min','Todos los grupos. 45–60 seg por posición. Al terminar sem 26, tómate un momento para reconocer lo conseguido.','Has completado el programa de 6 meses'),
+];
+
+// ═══════════════════════════════════════════════════════
+// RUTINAS COMPLETAS — estructura por fase y día
+// ═══════════════════════════════════════════════════════
 const RUTINAS = [
-  {bloque:"Semanas 1–2 — Aprendizaje técnico",desc:"Aprende la ejecución correcta. Series cortas, descansos generosos. Calidad sobre cantidad. 4 días/sem · 30 min",dias:[
-    {t:"Día 1 — Piernas y Glúteos",g:["Piernas","Glúteos"],ex:[
-      {n:"Sentadilla con peso corporal",s:"3×12",d:"Pies al ancho de hombros, baja hasta muslos paralelos al suelo. Rodillas alineadas con los pies, pecho erguido. Empuja desde los talones.",c:"Mantén los talones en el suelo todo el tiempo"},
-      {n:"Zancada estática (lunge)",s:"3×10/pierna",d:"Paso adelante amplio, baja la rodilla trasera casi al suelo, vuelve al centro. Tronco recto, rodilla delantera no pasa el pie.",c:"Contrae el glúteo de la pierna trasera al subir"},
-      {n:"Puente de glúteos",s:"3×15",d:"Tumbado, rodillas dobladas, pies planos. Eleva caderas contrayendo glúteos hasta línea recta. Aguanta 1 seg arriba.",c:"Aprieta fuerte los glúteos en la posición alta"},
-      {n:"Sentadilla sumo",s:"3×12",d:"Pies más separados, puntas hacia fuera 45°. Baja manteniendo rodillas alineadas con los pies.",c:"Perfecto para glúteo medio y aductores"},
-      {n:"Elevación de talones (gemelos)",s:"3×20",d:"De pie, sube de puntillas lo más alto posible, baja lento. En escalón para mayor rango.",c:"Controla la bajada, no caigas"}
-    ]},
-    {t:"Día 2 — Abdomen y Core",g:["Abdomen","Core"],ex:[
-      {n:"Plancha frontal",s:"3×20 seg",d:"Apoyado en antebrazos y puntas de pies, cuerpo recto. No dejes caer las caderas ni las subas. Respira normal.",c:"Si falla la forma, para — no vale la pena aguantar mal"},
-      {n:"Crunch clásico",s:"3×15",d:"Tumbado, rodillas dobladas, manos en sienes. Contrae abdomen y eleva solo los hombros del suelo. No tires del cuello.",c:"El movimiento es corto, no un sit-up completo"},
-      {n:"Plancha lateral",s:"3×15 seg/lado",d:"Apoyado en un antebrazo y borde del pie, cuerpo en línea recta lateral. Cadera arriba, sin hundirla.",c:"Activa el oblicuo lateral — muy funcional"},
-      {n:"Elevación de rodillas en suelo",s:"3×12",d:"Tumbado, manos bajo glúteos, eleva ambas rodillas al pecho y vuelve sin tocar el suelo. Controla el descenso.",c:"No balancees — movimiento lento y controlado"},
-      {n:"Superman",s:"3×12",d:"Boca abajo, brazos extendidos. Eleva simultaneamente brazos y piernas contrayendo espalda baja y glúteos. Aguanta 2 seg.",c:"Fortalece la cadena posterior, clave para la postura"}
-    ]},
-    {t:"Día 3 — Brazos y Hombros",g:["Brazos","Hombros"],ex:[
-      {n:"Press de hombros · mancuernas 5 kg",s:"3×12",d:"Sentado o de pie, mancuernas a altura de orejas, palmas al frente. Empuja hacia arriba sin bloquear codos. Baja lento.",c:"No arquees la espalda baja al subir"},
-      {n:"Curl de bíceps · mancuernas 5 kg",s:"3×12",d:"De pie, brazos pegados al cuerpo, palmas al frente. Dobla el codo llevando la mancuerna al hombro. Baja en 3 seg.",c:"El codo no se mueve — es el único punto fijo"},
-      {n:"Elevaciones laterales · 1 kg",s:"3×15",d:"De pie, brazos ligeramente doblados, sube lateralmente hasta altura del hombro. Baja controlando.",c:"Con 1 kg es suficiente — trabaja el deltoides medio"},
-      {n:"Flexiones (push-ups)",s:"3×8",d:"Manos al ancho de hombros, cuerpo recto, baja el pecho al suelo doblando codos a 45°. Si no puedes, con rodillas.",c:"El pecho debe casi tocar el suelo"},
-      {n:"Patada de tríceps · 5 kg",s:"3×12/brazo",d:"Inclinado hacia adelante, codo doblado 90° pegado al cuerpo, extiende el brazo hacia atrás hasta quedar recto. Vuelve lento.",c:"Solo se mueve el antebrazo — el codo es el pivote"}
-    ]},
-    {t:"Día 4 — Cuerpo Completo · Balón",g:["Full body","Balón 5 kg"],ex:[
-      {n:"Sentadilla con balón al pecho",s:"3×12",d:"Sostén el balón al pecho con ambas manos. Sentadilla completa. El balón activa más el core.",c:"El peso te obliga a mantener el pecho erguido"},
-      {n:"Slam de balón",s:"3×10",d:"Sujeta el balón sobre la cabeza, lánzalo con fuerza contra el suelo. Recógelo al bote y repite.",c:"Expulsa el aire al lanzar — libera tensión y potencia"},
-      {n:"Rotación de tronco con balón",s:"3×12/lado",d:"Sentado en suelo, piernas ligeramente elevadas, sostén el balón y rótalo de lado a lado tocando el suelo.",c:"Lento y controlado — tensión, no velocidad"},
-      {n:"Press de pecho con balón en suelo",s:"3×12",d:"Tumbado boca arriba, balón sobre el pecho, empuja hacia arriba extendiendo los brazos. Baja lento.",c:"Alternativa funcional al press de banca"},
-      {n:"Lunge con balón arriba",s:"3×10/pierna",d:"Sostén el balón sobre la cabeza con brazos extendidos y haz zancadas. Exige más estabilidad.",c:"Si inestable, baja el balón al pecho primero"}
-    ]}
-  ]},
-  {bloque:"Semanas 3–4 — Volumen base",desc:"Ya conoces los movimientos. Sube reps, reduce descansos 10–15 seg. Llega al límite en la última serie. 4 días/sem · 30 min",dias:[
-    {t:"Día 1 — Piernas y Glúteos · Volumen",g:["Piernas","Glúteos"],ex:[
-      {n:"Sentadilla con peso corporal",s:"4×15",d:"Igual que sem 1–2 pero más reps y 10 seg menos de descanso (50 seg entre series). La última serie debe costarte.",c:"Si te sobra energía, añade pausa de 2 seg abajo"},
-      {n:"Zancada caminando",s:"3×12/pierna",d:"En vez de estática, avanza con cada zancada. Más dinámico y exigente cardiovascularmente.",c:"Mantén el tronco erguido y el paso largo"},
-      {n:"Puente de glúteos a una pierna",s:"3×12/pierna",d:"Como el puente normal pero con una pierna extendida en el aire. Mucho más exigente.",c:"No dejes caer la cadera del lado elevado"},
-      {n:"Sentadilla sumo · mancuerna 5 kg",s:"4×12",d:"Sujeta una mancuerna de 5 kg con ambas manos entre las piernas. Sentadilla sumo con carga extra.",c:"La mancuerna te ayuda a mantener el torso recto"},
-      {n:"Elevación de pierna lateral en suelo",s:"3×15/pierna",d:"De lado, eleva la pierna superior lo más alto posible y baja lento. Trabaja glúteo medio.",c:"No gires la cadera — movimiento puro lateral"}
-    ]},
-    {t:"Día 2 — Abdomen y Core · Volumen",g:["Abdomen","Core"],ex:[
-      {n:"Plancha frontal",s:"4×25 seg",d:"Misma ejecución, 25 seg y 4 series. Descansa 40 seg entre series.",c:"Si flaqueas en la forma, reduce tiempo"},
-      {n:"Crunch con balón medicinal",s:"3×15",d:"Igual que el crunch clásico pero sosteniendo el balón de 5 kg sobre el pecho.",c:"No uses el impulso del balón — contrae el abdomen"},
-      {n:"Plancha lateral con elevación de cadera",s:"3×12/lado",d:"En posición de plancha lateral, baja la cadera casi al suelo y súbela de nuevo.",c:"El oblicuo trabaja en todo el rango"},
-      {n:"Tijeras",s:"3×15/pierna",d:"Tumbado, pies a 10 cm del suelo. Alterna subiendo una pierna y bajando la otra.",c:"Espalda baja pegada al suelo siempre"},
-      {n:"Balón medicinal en crunch",s:"3×12",d:"Tumbado, sostén el balón con brazos extendidos sobre la cabeza. Al hacer el crunch sube el balón hacia los pies.",c:"El balón aumenta el rango y la carga"}
-    ]},
-    {t:"Día 3 — Brazos y Hombros · Volumen",g:["Brazos","Hombros"],ex:[
-      {n:"Press de hombros · 5 kg",s:"4×12",d:"4 series con descanso de 50 seg. Busca la fatiga en la última serie.",c:"Sube el peso solo si mantienes la forma"},
-      {n:"Curl martillo · 5 kg",s:"3×12",d:"Como el curl de bíceps pero con palmas mirándose (posición de martillo). Trabaja braquial y braquiorradial.",c:"Complementa el curl clásico para bíceps completo"},
-      {n:"Elevaciones frontales · 1 kg",s:"3×15",d:"De pie, sube los brazos hacia el frente hasta la altura del hombro, alternando o simultáneamente.",c:"1 kg parece poco pero en 15 reps quema"},
-      {n:"Flexiones diamante",s:"3×8",d:"Manos juntas formando un triángulo bajo el pecho, flexiona los codos hacia atrás. Trabaja tríceps y pecho interior.",c:"Si es difícil, hazlas con rodillas en el suelo"},
-      {n:"Press Arnold · 5 kg",s:"3×12",d:"Empieza con palmas hacia ti al nivel del pecho, al subir gira las muñecas hasta palmas al frente. Trabaja los tres haces del deltoides.",c:"El giro es lo que hace especial este ejercicio"}
-    ]},
-    {t:"Día 4 — Cuerpo Completo · Volumen",g:["Full body","Balón 5 kg"],ex:[
-      {n:"Burpee con balón",s:"3×8",d:"Sostén el balón, baja al suelo, haz una plancha, incorpórate y salta con el balón sobre la cabeza.",c:"Si es demasiado, haz la versión sin salto"},
-      {n:"Slam de balón",s:"4×10",d:"4 series, 10 slams cada una, 40 seg descanso. La fatiga acumulada es el objetivo.",c:"Máxima potencia en cada lanzamiento"},
-      {n:"Sentadilla a press con balón",s:"3×12",d:"Parte de sentadilla con el balón al pecho. Al subir, empuja el balón sobre la cabeza.",c:"Combina piernas y hombros en un solo movimiento"},
-      {n:"Rotación con balón de pie",s:"3×15/lado",d:"De pie, balón a la altura del pecho. Rota el tronco a un lado lo más posible.",c:"Los pies no se mueven — la rotación es del tronco"},
-      {n:"Mountain climbers",s:"3×20 total",d:"En posición de plancha alta, lleva alternadamente cada rodilla hacia el pecho rápido.",c:"Cardio + core — activa todo el cuerpo"}
-    ]}
-  ]},
-  {bloque:"Semanas 5–6 — Dificultad técnica",desc:"Variantes más exigentes de los ejercicios base. Más carga con el balón y mancuernas de 5 kg. El cuerpo ya está adaptado. 4 días/sem · 30 min",dias:[
-    {t:"Día 1 — Piernas y Glúteos · Dificultad",g:["Piernas","Glúteos"],ex:[
-      {n:"Sentadilla búlgara · mancuerna 5 kg",s:"3×10/pierna",d:"Pie trasero apoyado en silla elevada, pie delantero adelantado. Baja la rodilla trasera al suelo sosteniendo la mancuerna.",c:"Empieza sin peso si hay desequilibrio — técnica antes que carga"},
-      {n:"Sentadilla profunda con pausa",s:"4×10",d:"Sentadilla normal pero al llegar abajo aguanta 3 segundos antes de subir. Elimina el rebote.",c:"La pausa maximiza el trabajo sin más peso"},
-      {n:"Hip thrust con balón medicinal",s:"4×15",d:"Hombros sobre cama o sofá, balón sobre las caderas como contrapeso. Rango de movimiento mayor.",c:"Busca máxima contracción arriba en cada rep"},
-      {n:"Zancada reversa · mancuerna 5 kg",s:"3×10/pierna",d:"En vez de dar el paso hacia adelante, da el paso hacia atrás. Menos estrés en la rodilla.",c:"Ideal si las zancadas adelante te molestan la rodilla"},
-      {n:"Sentadilla lateral (side squat)",s:"3×12/lado",d:"Pies juntos, da un paso amplio a un lado y baja en sentadilla sobre esa pierna. La otra queda extendida.",c:"Mantén el pie del lado que bajas completamente en el suelo"}
-    ]},
-    {t:"Día 2 — Abdomen y Core · Dificultad",g:["Abdomen","Core"],ex:[
-      {n:"Plancha con elevación de brazo",s:"3×10/brazo",d:"En plancha alta, eleva un brazo al frente aguantando 2 seg sin rotar la cadera. Alterna.",c:"La cadera no rota ni sube — eso es la clave"},
-      {n:"Crunch bicicleta",s:"3×20 total",d:"Tumbado, lleva el codo derecho hacia la rodilla izquierda mientras extiendes la derecha, alterna.",c:"Lento y controlado — no es velocidad"},
-      {n:"Dragon flag (versión suave)",s:"3×8",d:"Tumbado, agárrate a algo fijo. Eleva piernas y cadera manteniendo el cuerpo recto. Baja muy lento.",c:"Si es demasiado, dobla las rodillas al bajar"},
-      {n:"Plancha con toque de hombros",s:"3×16 total",d:"En plancha alta, toca el hombro contrario con la mano alternando. Cadera estable.",c:"Pies más separados dan más estabilidad al empezar"},
-      {n:"Rueda de abdominales con balón",s:"3×10",d:"Arrodillado, coloca el balón ante ti. Rueda el balón hacia adelante y vuelve contrayendo el abdomen.",c:"Muy exigente — asegura que el core aguante"}
-    ]},
-    {t:"Día 3 — Brazos y Hombros · Dificultad",g:["Brazos","Hombros"],ex:[
-      {n:"Press de hombros con balón de pie",s:"3×12",d:"De pie, sostén el balón sobre la cabeza y bájalo detrás de la cabeza o al pecho. Exige estabilidad del core.",c:"El balón es inestable — activa más músculos estabilizadores"},
-      {n:"Curl de bíceps concentrado · 5 kg",s:"3×12/brazo",d:"Sentado, codo apoyado en el muslo interior, curl lento en 3 seg de bajada. Máxima contracción.",c:"El apoyo elimina el trampa con el cuerpo"},
-      {n:"Flexiones con pies elevados",s:"3×8",d:"Pies en la cama o silla, manos en el suelo. La inclinación carga más el deltoides anterior.",c:"Si es demasiado, vuelve a las normales"},
-      {n:"Press francés de tríceps · 5 kg",s:"3×12",d:"Tumbado, mancuerna con ambas manos sobre el pecho, codos al techo. Dobla codos hacia la frente, extiende.",c:"Los codos no se abren — permanecen apuntando arriba"},
-      {n:"Remo con mancuerna · 5 kg",s:"3×12/brazo",d:"Apoyado en rodilla y mano en la cama, espalda paralela al suelo. Tira la mancuerna hacia la cadera.",c:"El codo va hacia arriba y atrás, no hacia el lado"}
-    ]},
-    {t:"Día 4 — Cuerpo Completo · Máxima dificultad",g:["Full body","Circuitos"],ex:[
-      {n:"Circuito 1: Sentadilla + slam",s:"3 rondas · 10+10",d:"10 sentadillas con balón al pecho seguidas de 10 slams. Sin descanso entre ejercicios, 60 seg entre rondas.",c:"La combinación cardio+fuerza maximiza la quema"},
-      {n:"Circuito 2: Lunge + press Arnold",s:"3 rondas · 10+12",d:"10 zancadas (5/pierna) seguidas de 12 press Arnold con 5 kg. Sin descanso interno.",c:"Mantén la forma aunque llegues fatigado"},
-      {n:"Circuito 3: Plancha + mountain climber",s:"3 rondas · 30s+20",d:"30 seg de plancha seguidos de 20 mountain climbers. Sin descanso interno.",c:"El core activo en ambos ejercicios"},
-      {n:"AMRAP 5 min: Burpees + crunch",s:"5 min continuos",d:"5 burpees + 10 crunches. Repite el máximo de rondas en 5 minutos. Anota el resultado.",c:"Este número es tu referencia para el test de semana 7–8"},
-      {n:"Estiramiento activo final",s:"5 min",d:"Cuádriceps, isquiotibiales, pectoral, hombros, espalda. 30 seg por posición.",c:"No lo saltes — acelera la recuperación"}
-    ]}
-  ]},
-  {bloque:"Semanas 7–8 — Máxima intensidad bloque 1",desc:"Último bloque antes de añadir días. Máximo esfuerzo. El Día 4 incluye el test AMRAP de referencia. 4 días/sem · 30 min",dias:[
-    {t:"Día 1 — Piernas y Glúteos · Máxima intensidad",g:["Piernas","Glúteos"],ex:[
-      {n:"Sentadilla búlgara · 2× mancuernas 5 kg",s:"4×10/pierna",d:"Una mancuerna en cada mano, pie trasero elevado. Control absoluto en la bajada.",c:"Si falla la forma, quita una mancuerna"},
-      {n:"Sentadilla con pausa y balón",s:"4×10",d:"Sentadilla con balón al pecho, 3 seg de pausa abajo. Combinación de pausa y carga muy exigente.",c:"Respira en la pausa — no contengas el aire"},
-      {n:"Hip thrust unilateral sin apoyo",s:"3×12/pierna",d:"Hip thrust con una sola pierna sin el balón. El glúteo trabaja al máximo para estabilizar.",c:"El glúteo de apoyo no debe relajarse en ningún momento"},
-      {n:"Sentadilla lateral · mancuerna 5 kg",s:"4×12/lado",d:"Como sem 5–6 pero con mancuerna en la mano del lado que baja.",c:"La mancuerna pende del brazo del lado que baja"},
-      {n:"Saltos al cajón o escalón",s:"3×10",d:"Salta con los dos pies sobre un escalón estable. Baja controladamente. Trabaja explosividad.",c:"Aterriza con rodillas ligeramente dobladas — nunca rígidas"}
-    ]},
-    {t:"Día 2 — Abdomen y Core · Máxima intensidad",g:["Abdomen","Core"],ex:[
-      {n:"Plancha con remo · mancuerna 5 kg",s:"3×10/brazo",d:"En plancha alta con mancuerna en el suelo. Tira la mancuerna hacia la cadera manteniendo la plancha.",c:"La cadera no rota al tirar — ese es el verdadero desafío"},
-      {n:"Crunch bicicleta con balón",s:"3×15/lado",d:"Crunch bicicleta sosteniendo el balón entre las manos. Lleva el balón hacia la rodilla que sube.",c:"Más peso, más activación abdominal"},
-      {n:"Dragon flag completo",s:"3×6",d:"Si en sem 5–6 llegaste a hacerlo, ahora busca el rango completo con control total de bajada.",c:"6 bien hechas valen más que 12 mal"},
-      {n:"L-sit en silla (isométrico)",s:"3×15 seg",d:"Sentado en el borde de una silla, manos en el asiento. Eleva caderas y extiende piernas al frente.",c:"Activa core, hombros y flexores de cadera"},
-      {n:"Abs con balón entre piernas",s:"3×12",d:"Tumbado, balón entre los pies. Sube las piernas juntas hasta 90°, baja lento sin tocar el suelo.",c:"Espalda baja pegada al suelo en todo momento"}
-    ]},
-    {t:"Día 3 — Brazos y Hombros · Máxima intensidad",g:["Brazos","Hombros"],ex:[
-      {n:"Press de hombros con pausa · 5 kg",s:"4×12",d:"Press con mancuernas pero aguanta 2 seg en posición alta y 2 seg en la baja. Elimina el impulso.",c:"Las pausas son el nuevo nivel sin más peso"},
-      {n:"Curl 21s · mancuernas 5 kg",s:"3 series",d:"7 reps rango inferior (0°–90°), 7 reps rango superior (90°–arriba), 7 reps completas. 21 en total.",c:"No descanses entre los tres rangos de cada serie"},
-      {n:"Flexiones con palmada",s:"3×6",d:"Flexión explosiva para despegar las manos del suelo y dar una palmada. Máxima potencia.",c:"Si no hay explosividad real, vuelve a las normales"},
-      {n:"Press francés a una mano · 5 kg",s:"3×12/brazo",d:"Como el press francés bilateral pero con una mancuerna. Mayor rango y aislamiento.",c:"El codo apunta al techo — no lo dejes caer hacia el lado"},
-      {n:"Face pull con balón (simulado)",s:"3×15",d:"De pie, balón con ambas manos al frente a altura del pecho. Tira hacia la cara doblando codos hacia atrás.",c:"Clave para la salud del hombro a largo plazo"}
-    ]},
-    {t:"Día 4 — TEST AMRAP y Evaluación",g:["Full body","Test"],ex:[
-      {n:"Calentamiento activo",s:"5 min",d:"Movilidad articular completa: círculos de cadera, hombros, tobillos, sentadillas sin peso, brazos en cruz.",c:"El calentamiento mejora el rendimiento en el test"},
-      {n:"TEST AMRAP 10 min",s:"10 min continuos",d:"5 burpees + 10 sentadillas con balón + 10 crunches. Repite el máximo de rondas. Anota el número exacto de rondas completas.",c:"Compara con tu AMRAP de sem 5–6 — esa mejora es tu progreso real"},
-      {n:"Flexiones máximas",s:"1 serie al fallo",d:"Sin límite de tiempo, el máximo de flexiones correctas sin parar. Anota el número.",c:"Referencia de fuerza de empuje para comparar en mes 6"},
-      {n:"Plancha máxima",s:"1 serie al fallo",d:"Aguanta la plancha frontal el máximo tiempo posible con buena forma. Anota los segundos.",c:"Otro marcador de progreso del core — guarda bien el número"},
-      {n:"Estiramiento final profundo",s:"10 min",d:"Todos los grupos: cuádriceps 45s, isquiotibiales 45s, pectoral 45s, hombros 45s, espalda baja 45s, gemelos 45s.",c:"Has terminado las 8 primeras semanas — descansa 48 h antes de la Fase 2"}
-    ]}
-  ]}
+  // FASE 1 — Sem 1-6
+  {
+    fase:'Fase 1 · Sem 1–6',
+    desc:'Base y aprendizaje. 4 días/sem · 30 min. Peso corporal, balón y mancuernas. Técnica correcta antes que intensidad.',
+    col:'blue',
+    subfases:[
+      {label:'Bloque 1 · Sem 1–2',desc:'Aprende la ejecución correcta. 3 series cortas. Calidad sobre cantidad.'},
+      {label:'Bloque 2 · Sem 3–4',desc:'Sube reps y reduce descansos 10 seg. La última serie debe costarte.'},
+      {label:'Bloque 3 · Sem 5–6',desc:'Variantes más exigentes. Más balón y mancuernas. Test de referencia en día 4.'},
+    ],
+    dias:[
+      [{t:'Día 1 · Piernas y Glúteos',g:['Piernas','Glúteos'],ex:F1D1_12},
+       {t:'Día 1 · Piernas y Glúteos · Vol.',g:['Piernas','Glúteos'],ex:F1D1_34},
+       {t:'Día 1 · Piernas y Glúteos · Var.',g:['Piernas','Glúteos'],ex:F1D1_56}],
+      [{t:'Día 2 · Abdomen y Core',g:['Abdomen','Core'],ex:F1D2_12},
+       {t:'Día 2 · Abdomen y Core · Vol.',g:['Abdomen','Core'],ex:F1D2_34},
+       {t:'Día 2 · Abdomen y Core · Var.',g:['Abdomen','Core'],ex:F1D2_56}],
+      [{t:'Día 3 · Brazos y Hombros',g:['Brazos','Hombros'],ex:F1D3_12},
+       {t:'Día 3 · Brazos y Hombros · Vol.',g:['Brazos','Hombros'],ex:F1D3_34},
+       {t:'Día 3 · Brazos y Hombros · Var.',g:['Brazos','Hombros'],ex:F1D3_56}],
+      [{t:'Día 4 · Full body · Balón',g:['Full body','Balón'],ex:F1D4_12},
+       {t:'Día 4 · Full body · Circuitos',g:['Full body','Circuitos'],ex:F1D4_34},
+       {t:'Día 4 · Full body · Test sem 6',g:['Full body','Test'],ex:F1D4_56}],
+    ]
+  },
+  // FASE 2 — Sem 7-12
+  {
+    fase:'Fase 2 · Sem 7–12',
+    desc:'Introduce banda elástica ligera. 4 días/sem · 32 min. Mayor volumen, menos descanso.',
+    col:'green',
+    subfases:[
+      {label:'Bloque 4 · Sem 7–8',desc:'Conoce la banda ligera. Aprende los patrones con resistencia elástica.'},
+      {label:'Bloque 5 · Sem 9–10',desc:'Más reps con banda. Circuitos de 3 rondas.'},
+      {label:'Bloque 6 · Sem 11–12',desc:'Circuitos completos. Descansos más cortos. Superseries suaves.'},
+    ],
+    dias:[
+      [{t:'Día 1 · Piernas y Glúteos · Banda ligera',g:['Piernas','Glúteos','Banda'],ex:F2D1},
+       {t:'Día 1 · Piernas y Glúteos · Banda ligera',g:['Piernas','Glúteos','Banda'],ex:F2D1},
+       {t:'Día 1 · Piernas y Glúteos · Banda ligera',g:['Piernas','Glúteos','Banda'],ex:F2D1}],
+      [{t:'Día 2 · Core avanzado',g:['Abdomen','Core'],ex:F2D2},
+       {t:'Día 2 · Core avanzado',g:['Abdomen','Core'],ex:F2D2},
+       {t:'Día 2 · Core avanzado',g:['Abdomen','Core'],ex:F2D2}],
+      [{t:'Día 3 · Banda ligera · Brazos y Hombros',g:['Brazos','Hombros','Banda'],ex:F2D3},
+       {t:'Día 3 · Banda ligera · Brazos y Hombros',g:['Brazos','Hombros','Banda'],ex:F2D3},
+       {t:'Día 3 · Banda ligera · Brazos y Hombros',g:['Brazos','Hombros','Banda'],ex:F2D3}],
+      [{t:'Día 4 · Full body · Circuitos',g:['Full body','Circuitos'],ex:F2D4},
+       {t:'Día 4 · Full body · Circuitos',g:['Full body','Circuitos'],ex:F2D4},
+       {t:'Día 4 · Full body · Circuitos',g:['Full body','Circuitos'],ex:F2D4}],
+    ]
+  },
+  // FASE 3 — Sem 13-18
+  {
+    fase:'Fase 3 · Sem 13–18',
+    desc:'Banda media y variantes intermedias. 4 días/sem · 35 min. Superseries y mayor carga.',
+    col:'amber',
+    subfases:[
+      {label:'Bloque 7 · Sem 13–14',desc:'Introduce la banda media. Test de flexiones en día 4.'},
+      {label:'Bloque 8 · Sem 15–16',desc:'Mayor carga. Superseries. Menos descanso entre series.'},
+      {label:'Bloque 9 · Sem 17–18',desc:'Combinaciones completas. Alta exigencia técnica.'},
+    ],
+    dias:[
+      [{t:'Día 1 · Piernas · Banda media',g:['Piernas','Glúteos','Banda media'],ex:F3D1},
+       {t:'Día 1 · Piernas · Banda media',g:['Piernas','Glúteos','Banda media'],ex:F3D1},
+       {t:'Día 1 · Piernas · Banda media',g:['Piernas','Glúteos','Banda media'],ex:F3D1}],
+      [{t:'Día 2 · Core nivel avanzado',g:['Abdomen','Core'],ex:F3D2},
+       {t:'Día 2 · Core nivel avanzado',g:['Abdomen','Core'],ex:F3D2},
+       {t:'Día 2 · Core nivel avanzado',g:['Abdomen','Core'],ex:F3D2}],
+      [{t:'Día 3 · Banda media · Fuerza',g:['Brazos','Hombros','Banda media'],ex:F3D3},
+       {t:'Día 3 · Banda media · Fuerza',g:['Brazos','Hombros','Banda media'],ex:F3D3},
+       {t:'Día 3 · Banda media · Fuerza',g:['Brazos','Hombros','Banda media'],ex:F3D3}],
+      [{t:'Día 4 · Superseries + Test',g:['Full body','Superseries'],ex:F3D4},
+       {t:'Día 4 · Superseries + Test',g:['Full body','Superseries'],ex:F3D4},
+       {t:'Día 4 · Superseries + Test',g:['Full body','Superseries'],ex:F3D4}],
+    ]
+  },
+  // FASE 4 — Sem 19-26
+  {
+    fase:'Fase 4 · Sem 19–26',
+    desc:'Banda fuerte. Consolidación. 4 días/sem · 38 min. Alta exigencia técnica y test final.',
+    col:'purple',
+    subfases:[
+      {label:'Bloque 10 · Sem 19–20',desc:'Introduce la banda fuerte. Ajusta al nuevo nivel de resistencia.'},
+      {label:'Bloque 11 · Sem 21–22',desc:'Test de fuerza. Ajuste de ejercicios según puntos débiles.'},
+      {label:'Bloque 12 · Sem 23–24',desc:'Máxima exigencia técnica.'},
+      {label:'Bloque 13 · Sem 25–26',desc:'Consolidación final. Test semana 26. Celebra lo conseguido.'},
+    ],
+    dias:[
+      [{t:'Día 1 · Piernas · Banda fuerte',g:['Piernas','Glúteos','Banda fuerte'],ex:F4D1},{t:'Día 1 · Piernas · Banda fuerte',g:['Piernas','Glúteos','Banda fuerte'],ex:F4D1},{t:'Día 1 · Piernas · Banda fuerte',g:['Piernas','Glúteos','Banda fuerte'],ex:F4D1},{t:'Día 1 · Piernas · Banda fuerte · Consolidación',g:['Piernas','Glúteos','Banda fuerte'],ex:F4D1}],
+      [{t:'Día 2 · Core máximo',g:['Abdomen','Core'],ex:F4D2},{t:'Día 2 · Core máximo',g:['Abdomen','Core'],ex:F4D2},{t:'Día 2 · Core máximo',g:['Abdomen','Core'],ex:F4D2},{t:'Día 2 · Core máximo · Sem 25-26',g:['Abdomen','Core'],ex:F4D2}],
+      [{t:'Día 3 · Banda fuerte · Fuerza',g:['Brazos','Hombros','Banda fuerte'],ex:F4D3},{t:'Día 3 · Banda fuerte · Fuerza',g:['Brazos','Hombros','Banda fuerte'],ex:F4D3},{t:'Día 3 · Banda fuerte · Fuerza',g:['Brazos','Hombros','Banda fuerte'],ex:F4D3},{t:'Día 3 · Banda fuerte · Fuerza · Sem 25-26',g:['Brazos','Hombros','Banda fuerte'],ex:F4D3}],
+      [{t:'Día 4 · Superseries + Test final',g:['Full body','Test final'],ex:F4D4},{t:'Día 4 · Superseries + Test final',g:['Full body','Test final'],ex:F4D4},{t:'Día 4 · Superseries + Test final',g:['Full body','Test final'],ex:F4D4},{t:'Día 4 · Superseries + Test final · Sem 25-26',g:['Full body','Test final'],ex:F4D4}],
+    ]
+  },
 ];
 
-// ══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 // STORAGE
-// ══════════════════════════════════════════════════════
-function load(key,def){try{const v=localStorage.getItem(key);return v?JSON.parse(v):def;}catch{return def;}}
-function save(key,val){try{localStorage.setItem(key,JSON.stringify(val));}catch(e){}}
+// ═══════════════════════════════════════════════════════
+function load(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d;}catch{return d;}}
+function save(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch{}}
 
-let DB = {
-  settings: load('ps_settings',{name:'',startDate:'',initWeight:'',goalWeight:'',trainingDays:[1,3,5,6]}),
-  habits: load('ps_habits',{}),       // {YYYY-MM-DD: [true,false,...]}
-  sessions: load('ps_sessions',[]),   // [{date,bloque,dia,dur,feel,notes}]
-  weights: load('ps_weights',[]),     // [{date,kg}]
-  tests: load('ps_tests',[])          // [{date,amrap,pushups,plank}]
+let DB={
+  settings:load('ps2_settings',{name:'',startDate:'',initWeight:'',goalWeight:''}),
+  habits:load('ps2_habits',{}),
+  sessions:load('ps2_sessions',[]),
+  weights:load('ps2_weights',[]),
+  tests:load('ps2_tests',[])
 };
-
-function saveDB(){
-  save('ps_settings',DB.settings);
-  save('ps_habits',DB.habits);
-  save('ps_sessions',DB.sessions);
-  save('ps_weights',DB.weights);
-  save('ps_tests',DB.tests);
-}
-
+function saveDB(){save('ps2_settings',DB.settings);save('ps2_habits',DB.habits);save('ps2_sessions',DB.sessions);save('ps2_weights',DB.weights);save('ps2_tests',DB.tests);}
 function today(){return new Date().toISOString().slice(0,10);}
-function fmtDate(d){if(!d)return '';try{const p=d.split('-');return p[2]+'/'+p[1]+'/'+p[0];}catch{return d;}}
+function fmtDate(d){if(!d)return'';try{const p=d.split('-');return p[2]+'/'+p[1]+'/'+p[0];}catch{return d;}}
+
 function getCurrentWeek(){
   if(!DB.settings.startDate)return 1;
-  const diff=Math.floor((new Date()-new Date(DB.settings.startDate))/(1000*86400));
+  const diff=Math.floor((new Date()-new Date(DB.settings.startDate))/86400000);
   return Math.min(26,Math.max(1,Math.floor(diff/7)+1));
 }
 
-// ══════════════════════════════════════════════════════
+// Which fase/subfase for a given week
+function weekToFase(wk){
+  if(wk<=2)return{fi:0,si:0};
+  if(wk<=4)return{fi:0,si:1};
+  if(wk<=6)return{fi:0,si:2};
+  if(wk<=8)return{fi:1,si:0};
+  if(wk<=10)return{fi:1,si:1};
+  if(wk<=12)return{fi:1,si:2};
+  if(wk<=14)return{fi:2,si:0};
+  if(wk<=16)return{fi:2,si:1};
+  if(wk<=18)return{fi:2,si:2};
+  if(wk<=20)return{fi:3,si:0};
+  if(wk<=22)return{fi:3,si:1};
+  if(wk<=24)return{fi:3,si:2};
+  return{fi:3,si:3};
+}
+
+// ═══════════════════════════════════════════════════════
 // NAVIGATION
-// ══════════════════════════════════════════════════════
-let curScreen='home';
+// ═══════════════════════════════════════════════════════
 function showScreen(id){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
   document.getElementById('s-'+id).classList.add('active');
   document.getElementById('nav-'+id).classList.add('active');
-  curScreen=id;
   if(id==='home')renderHome();
   if(id==='plan')renderPlan();
   if(id==='track')renderTrack();
   if(id==='settings')renderSettings();
 }
 
-// ══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 // HOME
-// ══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 function renderHome(){
-  const n=DB.settings.name||'';
   const h=new Date().getHours();
   const gr=h<13?'Buenos días':h<20?'Buenas tardes':'Buenas noches';
-  const greeting=h<13?'Buenos días':h<20?'Buenas tardes':'Buenas noches';
-  document.getElementById('home-greeting').textContent=(n?greeting+', '+n+' 👋':greeting+' 👋');
-  const d=new Date();
-  document.getElementById('home-date').textContent=d.toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'});
-
-  // Week/phase
+  const n=DB.settings.name;
+  document.getElementById('home-greeting').textContent=gr+(n?' '+n:'')+' 👋';
+  document.getElementById('home-date').textContent=new Date().toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'});
   const wk=getCurrentWeek();
   document.getElementById('home-week-num').textContent='Semana '+wk;
-  const fase=wk<=8?'Fase 1':wk<=12?'Fase 2':wk<=16?'Fase 3':wk<=20?'Fase 4':wk<=24?'Fase 5':'Fase 6';
-  const dias=wk<=8?'4 días/sem · 30 min':wk<=12?'5 días/sem · 33 min':wk<=16?'6 días/sem · 36 min':'7 días/sem · 38–40 min';
-  document.getElementById('home-phase-badge').textContent=fase;
-  document.getElementById('home-days-txt').textContent=dias;
+  const {fi}=weekToFase(wk);
+  const fase=FASES[fi];
+  document.getElementById('home-phase-badge').textContent=RUTINAS[fi].fase.split('·')[0].trim();
+  document.getElementById('home-days-txt').textContent='4 días/sem · '+fase.mins+' min';
   const pct=Math.round((wk-1)/26*100);
   document.getElementById('home-prog-pct').textContent=pct+'%';
   document.getElementById('home-prog-bar').style.width=pct+'%';
-
   // Habits
   const td=today();
   if(!DB.habits[td])DB.habits[td]=new Array(8).fill(false);
-  let html='';
+  let hh='';
   DB.habits[td].forEach((done,i)=>{
-    html+=`<div class="check-row" onclick="toggleHabit(${i})">
-      <div class="check-box ${done?'done':''}">${done?'<svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>':''}</div>
-      <span class="check-text ${done?'done':''}">${HABITOS[i]}</span>
-    </div>`;
+    hh+=`<div class="check-row" onclick="toggleHabit(${i})">
+      <div class="check-box ${done?'done':''}">${done?'<svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" width="11" height="11"><polyline points="20 6 9 17 4 12"/></svg>':''}</div>
+      <span class="check-text ${done?'done':''}">${HABITOS[i]}</span></div>`;
   });
-  document.getElementById('habits-today').innerHTML=html;
+  document.getElementById('habits-today').innerHTML=hh;
   const done=DB.habits[td].filter(Boolean).length;
   document.getElementById('habits-count').textContent=done+' / 8 completados';
   document.getElementById('habits-pct').textContent=Math.round(done/8*100)+'%';
   document.getElementById('habits-bar').style.width=Math.round(done/8*100)+'%';
-
-  // Last weight
-  if(DB.weights.length){
-    const lw=DB.weights[DB.weights.length-1];
-    document.getElementById('last-weight-txt').textContent='Último registro: '+lw.kg+' kg el '+fmtDate(lw.date);
-  }
-
+  // Weight
+  if(DB.weights.length){const lw=DB.weights[DB.weights.length-1];document.getElementById('last-weight-txt').textContent='Último: '+lw.kg+' kg · '+fmtDate(lw.date);}
   // Recent sessions
-  const recent=DB.sessions.slice(-3).reverse();
-  if(recent.length){
+  const rs=DB.sessions.slice(-3).reverse();
+  if(rs.length){
     let sh='';
-    recent.forEach(s=>{
-      const feel=['','😩','😓','😐','😊','💪'][s.feel]||'';
+    rs.forEach(s=>{
+      const f=['','😩','😓','😐','😊','💪'][s.feel]||'';
+      const rut=RUTINAS[s.fi]?.dias[s.dia]?.[s.si];
+      const title=rut?rut.t:'Sesión';
       sh+=`<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:0.5px solid var(--border)">
-        <div><div style="font-size:13px;font-weight:500">${RUTINAS[s.bloque].dias[s.dia].t}</div>
+        <div><div style="font-size:13px;font-weight:500">${title}</div>
         <div style="font-size:11px;color:var(--text3)">${fmtDate(s.date)} · ${s.dur} min</div></div>
-        <span style="font-size:18px">${feel}</span>
-      </div>`;
+        <span style="font-size:18px">${f}</span></div>`;
     });
     document.getElementById('home-recent-sessions').innerHTML=sh;
   } else {
@@ -667,148 +750,141 @@ function toggleHabit(i){
   const td=today();
   if(!DB.habits[td])DB.habits[td]=new Array(8).fill(false);
   DB.habits[td][i]=!DB.habits[td][i];
-  saveDB();
-  renderHome();
+  saveDB();renderHome();
 }
-
 function saveQuickWeight(){
   const v=parseFloat(document.getElementById('quick-weight').value);
   if(!v||v<20||v>300)return alert('Introduce un peso válido');
-  DB.weights.push({date:today(),kg:v});
-  saveDB();
-  document.getElementById('quick-weight').value='';
-  renderHome();
+  DB.weights.push({date:today(),kg:v});saveDB();
+  document.getElementById('quick-weight').value='';renderHome();
 }
-
 function goToTodayRoutine(){
-  showScreen('routines');
   const wk=getCurrentWeek();
-  const blq=wk<=2?0:wk<=4?1:wk<=6?2:3;
-  setBloque(blq);
+  const {fi,si}=weekToFase(wk);
+  showScreen('routines');
+  setFase(fi);
+  curSi=si;
+  renderRutina();
 }
 
-// ══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 // PLAN
-// ══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 function renderPlan(){
-  // Phases
   let ph='';
   FASES.forEach((f,i)=>{
-    const col=f.col==='green'?'green':f.col==='amber'?'amber':f.col==='purple'?'purple':'blue';
-    ph+=`<div class="card card-sm" style="cursor:pointer" onclick="this.querySelector('.phase-detail').style.display=this.querySelector('.phase-detail').style.display==='none'?'block':'none'">
+    const col=f.col;
+    ph+=`<div class="card card-sm" onclick="this.querySelector('.pd').style.display=this.querySelector('.pd').style.display==='none'?'block':'none'">
       <div class="row-between">
-        <div><span class="badge badge-${col}" style="margin-bottom:6px">${f.n} · Sem ${f.s}</span>
-        <div style="font-size:14px;font-weight:500">${f.foco}</div>
-        <div style="font-size:12px;color:var(--text2);margin-top:2px">${f.d} días/sem · ${f.m} min</div></div>
-        <svg viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="2" width="18" height="18"><polyline points="6 9 12 15 18 9"/></svg>
+        <div><span class="badge badge-${col}" style="margin-bottom:6px">${RUTINAS[i].fase}</span>
+        <div style="font-size:13px;font-weight:500;margin-top:4px">${f.foco||f.desc.slice(0,60)+'...'}</div>
+        <div style="font-size:11px;color:var(--text2);margin-top:3px">4 días/sem · ${f.mins} min · ${f.equipo}</div></div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="2" width="16" height="16"><polyline points="6 9 12 15 18 9"/></svg>
       </div>
-      <div class="phase-detail" style="display:none;margin-top:10px;font-size:13px;color:var(--text2);border-top:0.5px solid var(--border);padding-top:10px">${f.desc}</div>
+      <div class="pd" style="display:none;margin-top:10px;font-size:13px;color:var(--text2);border-top:0.5px solid var(--border);padding-top:10px">${f.desc}</div>
     </div>`;
   });
   document.getElementById('phases-list').innerHTML=ph;
 
-  // Prog table
-  let pt=`<div style="overflow-x:auto"><table style="width:100%;font-size:12px;border-collapse:collapse">
-    <thead><tr style="border-bottom:0.5px solid var(--border2)">
-      <th style="text-align:left;padding:6px 8px;color:var(--text3);font-weight:600">Semanas</th>
-      <th style="text-align:center;padding:6px 4px;color:var(--text3);font-weight:600">Días</th>
-      <th style="text-align:center;padding:6px 4px;color:var(--text3);font-weight:600">Min</th>
-      <th style="text-align:left;padding:6px 8px;color:var(--text3);font-weight:600">Foco</th>
-    </tr></thead><tbody>`;
-  PROG.forEach((r,i)=>{
-    pt+=`<tr style="border-bottom:0.5px solid var(--border)">
-      <td style="padding:7px 8px;font-family:var(--mono);font-size:11px;color:var(--accent2)">S${r.s}</td>
-      <td style="text-align:center;padding:7px 4px;font-weight:500">${r.d}</td>
-      <td style="text-align:center;padding:7px 4px;color:var(--green)">${r.m}</td>
-      <td style="padding:7px 8px;color:var(--text2);font-size:12px">${r.f}</td>
-    </tr>`;
-  });
-  pt+='</tbody></table></div>';
-  document.getElementById('prog-table').innerHTML=pt;
-
   // Equip
   let eq='';
   EQUIPO.forEach(e=>{
-    const col=e.col==='green'?'green':e.col==='amber'?'amber':'blue';
     eq+=`<div class="card card-sm">
-      <div class="badge badge-${col}" style="margin-bottom:8px">${e.when}</div>
+      <span class="badge badge-${e.col}" style="margin-bottom:8px">${e.when}</span>
       <div style="font-size:13px;color:var(--text2)">${e.items}</div>
     </div>`;
   });
   document.getElementById('equip-list').innerHTML=eq;
+
+  // Prog table
+  let pt=`<div style="overflow-x:auto"><table style="width:100%;font-size:12px;border-collapse:collapse">
+    <thead><tr style="border-bottom:0.5px solid var(--border2)">
+      <th style="text-align:left;padding:6px;color:var(--text3);font-weight:600">Sem</th>
+      <th style="text-align:center;padding:6px;color:var(--text3);font-weight:600">Días</th>
+      <th style="text-align:center;padding:6px;color:var(--text3);font-weight:600">Min</th>
+      <th style="text-align:left;padding:6px;color:var(--text3);font-weight:600">Foco</th>
+    </tr></thead><tbody>`;
+  PROG.forEach((r,i)=>{
+    const bg=i%2===0?'':'background:var(--bg3)';
+    pt+=`<tr style="border-bottom:0.5px solid var(--border);${bg}">
+      <td style="padding:6px;font-family:var(--mono);font-size:11px;color:var(--accent2)">${r.s}</td>
+      <td style="text-align:center;padding:6px;font-weight:500">4</td>
+      <td style="text-align:center;padding:6px;color:var(--green)">${r.m}</td>
+      <td style="padding:6px;color:var(--text2);font-size:11px">${r.f}</td>
+    </tr>`;
+  });
+  pt+='</tbody></table></div>';
+  document.getElementById('prog-table').innerHTML=pt;
 }
 
-// ══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 // RUTINAS
-// ══════════════════════════════════════════════════════
-let curBloque=0, curDia=0, openEx=-1;
+// ═══════════════════════════════════════════════════════
+let curFi=0,curSi=0,curDia=0,openEx=-1;
 
-function setBloque(i){
-  curBloque=i; curDia=0; openEx=-1;
-  [0,1,2,3].forEach(j=>{
-    const b=document.getElementById('blq-'+j);
-    b.className=j===i?'btn btn-primary btn-sm':'btn btn-ghost btn-sm';
-    b.style.width='auto'; b.style.whiteSpace='nowrap';
+function renderFaseBtns(){
+  let html='';
+  RUTINAS.forEach((r,i)=>{
+    const col=i===curFi?FASES[i].col:'';
+    const active=i===curFi;
+    html+=`<button onclick="setFase(${i})" style="white-space:nowrap;padding:7px 14px;border-radius:8px;font-size:12px;font-weight:500;border:none;cursor:pointer;font-family:var(--font);background:${active?'var(--accent)':'var(--bg3)'};color:${active?'#fff':'var(--text2)'};">${r.fase.split('·')[0].trim()}</button>`;
   });
-  [0,1,2,3].forEach(j=>{
-    const b=document.getElementById('dia-'+j);
-    b.className=j===0?'btn btn-green btn-sm':'btn btn-ghost btn-sm';
-    b.style.flex='1'; b.style.width='auto';
-  });
-  renderBloqueDesc();
-  renderRutina();
+  document.getElementById('fase-btns').innerHTML=html;
 }
 
-function setDia(i){
-  curDia=i; openEx=-1;
-  [0,1,2,3].forEach(j=>{
-    const b=document.getElementById('dia-'+j);
-    b.className=j===i?'btn btn-green btn-sm':'btn btn-ghost btn-sm';
-    b.style.flex='1'; b.style.width='auto';
-  });
+function setFase(i){curFi=i;curSi=0;curDia=0;openEx=-1;renderFaseBtns();renderBloqueDesc();renderRutina();}
+function setDia(i){curDia=i;openEx=-1;
+  [0,1,2,3].forEach(j=>{const b=document.getElementById('dia-'+j);b.className=j===i?'btn btn-green btn-sm':'btn btn-ghost btn-sm';b.style.flex='1';b.style.width='auto';});
   renderRutina();
 }
 
 function renderBloqueDesc(){
-  const b=RUTINAS[curBloque];
+  const r=RUTINAS[curFi];
+  const sf=r.subfases[curSi]||r.subfases[0];
+  const col=FASES[curFi].col;
   document.getElementById('bloque-desc-card').innerHTML=
-    `<div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px">${b.bloque}</div>
-     <div style="font-size:12px;color:var(--text2)">${b.desc}</div>`;
+    `<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px">
+      ${r.subfases.map((s,i)=>`<button onclick="setSub(${i})" style="padding:5px 12px;border-radius:99px;font-size:12px;font-weight:500;border:none;cursor:pointer;font-family:var(--font);background:${i===curSi?'var(--accent)':'var(--bg4)'};color:${i===curSi?'#fff':'var(--text2)'}">${s.label}</button>`).join('')}
+    </div>
+    <div style="font-size:12px;color:var(--text2)">${sf.desc}</div>`;
 }
 
+function setSub(i){curSi=i;openEx=-1;renderBloqueDesc();renderRutina();}
+
 function renderRutina(){
-  const r=RUTINAS[curBloque].dias[curDia];
+  const fase=RUTINAS[curFi];
+  const si=Math.min(curSi,fase.dias[curDia].length-1);
+  const r=fase.dias[curDia][si];
   let html=`<div style="margin-bottom:12px">
-    <div style="font-size:15px;font-weight:600;margin-bottom:6px">${r.t}</div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:6px">${r.t}</div>
     <div>${r.g.map(g=>`<span class="tag">${g}</span>`).join('')}</div>
+    <div style="font-size:11px;color:var(--text3);margin-top:6px">Toca cada ejercicio para descripción, vídeo y fotos</div>
   </div>`;
   r.ex.forEach((e,i)=>{
     html+=`<div class="ex-item">
       <div class="ex-header" onclick="toggleEx(${i})">
         <div class="ex-name">${e.n}</div>
         <span class="ex-sets">${e.s}</span>
-        <span class="ex-arrow" id="ex-arr-${i}">▼</span>
+        <span class="ex-arrow" id="ea${i}">▼</span>
       </div>
-      <div class="ex-body" id="ex-body-${i}">
-        ${e.d}
+      <div class="ex-body" id="eb${i}">
+        <div style="margin-bottom:8px">${e.d}</div>
         <div class="ex-tip">Clave: ${e.c}</div>
+        ${links(e.n)}
       </div>
     </div>`;
   });
   document.getElementById('rutina-content').innerHTML=html;
+  openEx=-1;
 }
 
 function toggleEx(i){
-  const body=document.getElementById('ex-body-'+i);
-  const arr=document.getElementById('ex-arr-'+i);
-  if(openEx===i){
-    body.classList.remove('open'); arr.classList.remove('open'); openEx=-1;
-  } else {
-    if(openEx>=0){
-      document.getElementById('ex-body-'+openEx).classList.remove('open');
-      document.getElementById('ex-arr-'+openEx).classList.remove('open');
-    }
-    body.classList.add('open'); arr.classList.add('open'); openEx=i;
+  const body=document.getElementById('eb'+i);
+  const arr=document.getElementById('ea'+i);
+  if(openEx===i){body.classList.remove('open');arr.classList.remove('open');openEx=-1;}
+  else{
+    if(openEx>=0){document.getElementById('eb'+openEx).classList.remove('open');document.getElementById('ea'+openEx).classList.remove('open');}
+    body.classList.add('open');arr.classList.add('open');openEx=i;
   }
 }
 
@@ -816,243 +892,191 @@ function saveSession(){
   const dur=parseInt(document.getElementById('sess-dur').value)||30;
   const feel=parseInt(document.getElementById('sess-feel').value)||4;
   const notes=document.getElementById('sess-notes').value||'';
-  DB.sessions.push({date:today(),bloque:curBloque,dia:curDia,dur,feel,notes});
+  DB.sessions.push({date:today(),fi:curFi,si:curSi,dia:curDia,dur,feel,notes});
   saveDB();
   document.getElementById('sess-dur').value='';
   document.getElementById('sess-notes').value='';
-  alert('✅ Sesión guardada correctamente');
+  document.getElementById('sess-feel').value='4';
+  alert('✅ Sesión guardada');
 }
 
-// ══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 // SEGUIMIENTO
-// ══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 function renderTrack(){
-  // Stats
   const total=DB.sessions.length;
   const mins=DB.sessions.reduce((a,s)=>a+s.dur,0);
   document.getElementById('stat-sessions').textContent=total;
   document.getElementById('stat-week').textContent='Sem '+getCurrentWeek();
   document.getElementById('stat-mins').textContent=mins;
-
   // Streak
   let streak=0;
-  const td=new Date(today());
-  for(let i=0;i<60;i++){
-    const d=new Date(td); d.setDate(td.getDate()-i);
+  const today_dt=new Date(today());
+  for(let i=0;i<90;i++){
+    const d=new Date(today_dt);d.setDate(today_dt.getDate()-i);
     const ds=d.toISOString().slice(0,10);
-    const h=DB.habits[ds]||[];
-    if(h.filter(Boolean).length>=4) streak++;
-    else if(i>0) break;
+    if((DB.habits[ds]||[]).filter(Boolean).length>=4)streak++;
+    else if(i>0)break;
   }
-  document.getElementById('stat-streak').innerHTML=streak+' <span style="font-size:14px">días</span>';
-
-  // Weight chart
+  document.getElementById('stat-streak').innerHTML=streak+' <span style="font-size:13px">días</span>';
   renderWeightChart();
-
   // Weight stats
   if(DB.weights.length>=2){
-    const first=DB.weights[0];
-    const last=DB.weights[DB.weights.length-1];
-    const diff=(last.kg-first.kg).toFixed(1);
-    const sign=diff>0?'+':'';
-    document.getElementById('weight-stats').innerHTML=
-      `<div><div class="stat-label">Inicial</div><div style="font-size:18px;font-weight:600">${first.kg} kg</div></div>
-       <div><div class="stat-label">Actual</div><div style="font-size:18px;font-weight:600">${last.kg} kg</div></div>
-       <div><div class="stat-label">Cambio</div><div style="font-size:18px;font-weight:600;color:${diff<=0?'var(--green)':'var(--amber)'}">${sign}${diff} kg</div></div>`;
-    if(DB.settings.goalWeight){
-      const toGoal=(last.kg-DB.settings.goalWeight).toFixed(1);
-      document.getElementById('weight-stats').innerHTML+=
-        `<div><div class="stat-label">Para objetivo</div><div style="font-size:18px;font-weight:600;color:var(--accent2)">${toGoal>0?'-'+toGoal:toGoal} kg</div></div>`;
-    }
+    const f=DB.weights[0],l=DB.weights[DB.weights.length-1];
+    const diff=round1(l.kg-f.kg);
+    const s=diff>0?'+':'';
+    let ws=`<div><div class="stat-label">Inicial</div><div style="font-size:18px;font-weight:600">${f.kg} kg</div></div>
+      <div><div class="stat-label">Actual</div><div style="font-size:18px;font-weight:600">${l.kg} kg</div></div>
+      <div><div class="stat-label">Cambio</div><div style="font-size:18px;font-weight:600;color:${diff<=0?'var(--green)':'var(--amber)'}">${s}${diff} kg</div></div>`;
+    if(DB.settings.goalWeight){const tg=round1(l.kg-DB.settings.goalWeight);ws+=`<div><div class="stat-label">Para objetivo</div><div style="font-size:18px;font-weight:600;color:var(--accent2)">${tg>0?'-'+tg:tg} kg</div></div>`;}
+    document.getElementById('weight-stats').innerHTML=ws;
   }
-
-  // Test history
+  // Tests
   if(DB.tests.length){
     let th='';
     DB.tests.slice().reverse().forEach(t=>{
       th+=`<div style="border-bottom:0.5px solid var(--border);padding:8px 0;font-size:13px">
-        <div style="font-weight:500;margin-bottom:4px">${fmtDate(t.date)}</div>
-        <div style="display:flex;gap:16px;color:var(--text2)">
-          ${t.amrap?`<span>AMRAP: <b style="color:var(--text)">${t.amrap} rondas</b></span>`:''}
+        <div style="font-weight:500;margin-bottom:3px">${fmtDate(t.date)}</div>
+        <div style="display:flex;gap:12px;color:var(--text2);flex-wrap:wrap">
           ${t.pushups?`<span>Flexiones: <b style="color:var(--text)">${t.pushups}</b></span>`:''}
           ${t.plank?`<span>Plancha: <b style="color:var(--text)">${t.plank}s</b></span>`:''}
-        </div>
-      </div>`;
+          ${t.squats?`<span>Sentadillas/min: <b style="color:var(--text)">${t.squats}</b></span>`:''}
+        </div></div>`;
     });
     document.getElementById('test-history').innerHTML=th;
   }
-
-  // Sessions history
+  // Sessions
   if(DB.sessions.length){
     let sh='';
     DB.sessions.slice().reverse().slice(0,20).forEach(s=>{
-      const feel=['','😩','😓','😐','😊','💪'][s.feel]||'';
+      const f=['','😩','😓','😐','😊','💪'][s.feel]||'';
+      const rut=RUTINAS[s.fi]?.dias[s.dia]?.[s.si];
+      const title=rut?rut.t:'Sesión';
       sh+=`<div style="border-bottom:0.5px solid var(--border);padding:9px 0">
-        <div class="row-between">
-          <div style="font-size:13px;font-weight:500">${RUTINAS[s.bloque].dias[s.dia].t}</div>
-          <span>${feel}</span>
-        </div>
+        <div class="row-between"><div style="font-size:13px;font-weight:500">${title}</div><span>${f}</span></div>
         <div style="font-size:11px;color:var(--text3);margin-top:2px">${fmtDate(s.date)} · ${s.dur} min ${s.notes?'· '+s.notes:''}</div>
       </div>`;
     });
     document.getElementById('sessions-history').innerHTML=sh;
   } else {
-    document.getElementById('sessions-history').innerHTML='<div class="empty">Aún no hay sesiones registradas</div>';
+    document.getElementById('sessions-history').innerHTML='<div class="empty">Sin sesiones aún</div>';
   }
 }
+
+function round1(n){return Math.round(n*10)/10;}
 
 function renderWeightChart(){
   const svg=document.getElementById('weight-chart');
   svg.innerHTML='';
-  if(DB.weights.length<2){
-    svg.innerHTML='<text x="160" y="70" text-anchor="middle" font-size="12" fill="#64748b" font-family="DM Sans">Registra al menos 2 pesos para ver la gráfica</text>';
-    return;
-  }
-  const pts=DB.weights.slice(-12);
+  const pts=DB.weights.slice(-14);
+  if(pts.length<2){svg.innerHTML='<text x="160" y="70" text-anchor="middle" font-size="12" fill="#64748b" font-family="DM Sans">Registra al menos 2 pesos para ver la gráfica</text>';return;}
   const kgs=pts.map(p=>p.kg);
-  const minK=Math.min(...kgs)-0.5;
+  const minK=Math.min(...kgs,DB.settings.goalWeight||99)-0.5;
   const maxK=Math.max(...kgs)+0.5;
-  const W=320, H=130, pad={l:36,r:10,t:10,b:30};
-  const xScale=i=>(pad.l+(W-pad.l-pad.r)*i/(pts.length-1));
-  const yScale=v=>(pad.t+(H-pad.t-pad.b)*(maxK-v)/(maxK-minK));
-
-  // Grid lines
-  [minK+0.5,minK+1,maxK-0.5].forEach(k=>{
-    const y=yScale(k);
-    svg.innerHTML+=`<line x1="${pad.l}" y1="${y.toFixed(1)}" x2="${W-pad.r}" y2="${y.toFixed(1)}" stroke="#1e2433" stroke-width="1"/>
-    <text x="${pad.l-4}" y="${(y+3).toFixed(1)}" class="chart-label" text-anchor="end">${k.toFixed(1)}</text>`;
-  });
-
-  // Line
-  const d=pts.map((p,i)=>(i===0?'M':'L')+xScale(i).toFixed(1)+' '+yScale(p.kg).toFixed(1)).join(' ');
-  svg.innerHTML+=`<path d="${d}" class="weight-line"/>`;
-
-  // Dots + labels
-  pts.forEach((p,i)=>{
-    const x=xScale(i), y=yScale(p.kg);
-    svg.innerHTML+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4" class="weight-dot"/>`;
-    if(i===0||i===pts.length-1){
-      svg.innerHTML+=`<text x="${x.toFixed(1)}" y="${(y-8).toFixed(1)}" class="chart-label" text-anchor="middle" fill="#94a3b8">${p.kg}</text>`;
-    }
-    // x axis label
-    const label=fmtDate(p.date).slice(0,5);
-    if(i===0||i===pts.length-1||pts.length<=4){
-      svg.innerHTML+=`<text x="${x.toFixed(1)}" y="${(H-4)}" class="chart-label" text-anchor="middle">${label}</text>`;
-    }
-  });
-
+  const W=320,H=130,pl=36,pr=10,pt=12,pb=28;
+  const xS=i=>pl+(W-pl-pr)*i/(pts.length-1);
+  const yS=v=>pt+(H-pt-pb)*(maxK-v)/(maxK-minK);
+  // Grid
+  [0,1,2].forEach(j=>{const y=pt+j*(H-pt-pb)/2;svg.innerHTML+=`<line x1="${pl}" y1="${y}" x2="${W-pr}" y2="${y}" stroke="#1e2433" stroke-width="1"/>`;});
   // Goal line
-  if(DB.settings.goalWeight&&DB.settings.goalWeight>=minK&&DB.settings.goalWeight<=maxK){
-    const gy=yScale(DB.settings.goalWeight);
-    svg.innerHTML+=`<line x1="${pad.l}" y1="${gy.toFixed(1)}" x2="${W-pad.r}" y2="${gy.toFixed(1)}" stroke="#10b981" stroke-width="1" stroke-dasharray="4 3"/>
-    <text x="${(W-pad.r-2)}" y="${(gy-3).toFixed(1)}" class="chart-label" text-anchor="end" fill="#10b981">obj</text>`;
-  }
+  if(DB.settings.goalWeight){const gy=yS(DB.settings.goalWeight);svg.innerHTML+=`<line x1="${pl}" y1="${gy.toFixed(1)}" x2="${W-pr}" y2="${gy.toFixed(1)}" stroke="#10b981" stroke-width="1.2" stroke-dasharray="4 3"/><text x="${W-pr-2}" y="${(gy-3).toFixed(1)}" font-size="9" fill="#10b981" text-anchor="end" font-family="DM Sans">obj</text>`;}
+  // Y labels
+  [minK+0.5,maxK-0.5].forEach(k=>{const y=yS(k);svg.innerHTML+=`<text x="${pl-4}" y="${(y+3).toFixed(1)}" font-size="9" fill="#64748b" text-anchor="end" font-family="DM Sans">${k.toFixed(1)}</text>`;});
+  // Line
+  const d=pts.map((p,i)=>(i===0?'M':'L')+xS(i).toFixed(1)+' '+yS(p.kg).toFixed(1)).join(' ');
+  svg.innerHTML+=`<path d="${d}" stroke="#3b82f6" fill="none" stroke-width="2.2"/>`;
+  // Dots
+  pts.forEach((p,i)=>{
+    const x=xS(i),y=yS(p.kg);
+    svg.innerHTML+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4" fill="#3b82f6"/>`;
+    if(i===0||i===pts.length-1)svg.innerHTML+=`<text x="${x.toFixed(1)}" y="${(y-7).toFixed(1)}" font-size="9" fill="#94a3b8" text-anchor="middle" font-family="DM Sans">${p.kg}</text>`;
+    if(i===0||i===pts.length-1){const lbl=p.date.slice(5);svg.innerHTML+=`<text x="${x.toFixed(1)}" y="${H-2}" font-size="9" fill="#64748b" text-anchor="middle" font-family="DM Sans">${lbl}</text>`;}
+  });
 }
 
 function saveWeight(){
   const v=parseFloat(document.getElementById('weight-input').value);
-  if(!v||v<20||v>300)return alert('Introduce un peso válido');
-  const d=document.getElementById('weight-date').value||today();
-  DB.weights.push({date:d,kg:v});
-  DB.weights.sort((a,b)=>a.date.localeCompare(b.date));
-  saveDB();
-  document.getElementById('weight-input').value='';
-  document.getElementById('weight-date').value='';
-  renderTrack();
+  if(!v||v<20||v>300)return alert('Peso inválido');
+  DB.weights.push({date:today(),kg:v});DB.weights.sort((a,b)=>a.date.localeCompare(b.date));saveDB();
+  document.getElementById('weight-input').value='';renderTrack();
 }
-
 function saveTest(){
+  const p=parseInt(document.getElementById('test-pushups').value)||0;
+  const pl=parseInt(document.getElementById('test-plank').value)||0;
+  const sq=parseInt(document.getElementById('test-squats').value)||0;
   const d=document.getElementById('test-date').value||today();
-  const amrap=parseInt(document.getElementById('test-amrap').value)||0;
-  const pushups=parseInt(document.getElementById('test-pushups').value)||0;
-  const plank=parseInt(document.getElementById('test-plank').value)||0;
-  if(!amrap&&!pushups&&!plank)return alert('Introduce al menos un resultado');
-  DB.tests.push({date:d,amrap,pushups,plank});
-  saveDB();
-  ['test-date','test-amrap','test-pushups','test-plank'].forEach(id=>document.getElementById(id).value='');
+  if(!p&&!pl&&!sq)return alert('Introduce al menos un resultado');
+  DB.tests.push({date:d,pushups:p,plank:pl,squats:sq});saveDB();
+  ['test-pushups','test-plank','test-squats','test-date'].forEach(id=>document.getElementById(id).value='');
   renderTrack();
 }
 
-// ══════════════════════════════════════════════════════
-// SETTINGS
-// ══════════════════════════════════════════════════════
-const DAY_NAMES=['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
-
+// ═══════════════════════════════════════════════════════
+// AJUSTES
+// ═══════════════════════════════════════════════════════
 function renderSettings(){
   const s=DB.settings;
   document.getElementById('set-name').value=s.name||'';
   document.getElementById('set-start').value=s.startDate||'';
   document.getElementById('set-weight').value=s.initWeight||'';
-  document.getElementById('set-goal-weight').value=s.goalWeight||'';
-
-  let dp='';
-  [0,1,2,3,4,5,6].forEach(i=>{
-    const sel=(s.trainingDays||[]).includes(i);
-    dp+=`<button onclick="toggleDay(${i})" id="day-btn-${i}" class="btn btn-sm" style="width:auto;flex:1;max-width:52px;background:${sel?'var(--accent)':'var(--bg3)'};color:${sel?'#fff':'var(--text2)'};border:0.5px solid var(--border2)">${DAY_NAMES[i]}</button>`;
-  });
-  document.getElementById('days-picker').innerHTML=dp;
+  document.getElementById('set-goal').value=s.goalWeight||'';
 }
-
-function toggleDay(i){
-  const days=DB.settings.trainingDays||[];
-  const idx=days.indexOf(i);
-  if(idx>=0)days.splice(idx,1); else days.push(i);
-  DB.settings.trainingDays=days.sort();
-  saveDB();
-  renderSettings();
-}
-
 function saveSettings(){
   DB.settings.name=document.getElementById('set-name').value;
   DB.settings.startDate=document.getElementById('set-start').value;
   DB.settings.initWeight=parseFloat(document.getElementById('set-weight').value)||'';
-  DB.settings.goalWeight=parseFloat(document.getElementById('set-goal-weight').value)||'';
-  saveDB();
-  alert('✅ Perfil guardado');
+  DB.settings.goalWeight=parseFloat(document.getElementById('set-goal').value)||'';
+  saveDB();alert('✅ Perfil guardado');
 }
-
 function exportData(){
   const blob=new Blob([JSON.stringify(DB,null,2)],{type:'application/json'});
-  const a=document.createElement('a');
-  a.href=URL.createObjectURL(blob);
-  a.download='plan-salud-backup-'+today()+'.json';
-  a.click();
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='plan-salud-backup-'+today()+'.json';a.click();
 }
-
-function resetData(){
-  DB.sessions=[];DB.habits={};DB.weights=[];DB.tests=[];
-  saveDB();
-  alert('Historial eliminado');
-  renderTrack();
+function importData(){document.getElementById('import-file').click();}
+function loadImport(e){
+  const f=e.target.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=ev=>{
+    try{
+      const data=JSON.parse(ev.target.result);
+      if(data.sessions)DB.sessions=data.sessions;
+      if(data.habits)DB.habits=data.habits;
+      if(data.weights)DB.weights=data.weights;
+      if(data.tests)DB.tests=data.tests;
+      if(data.settings)DB.settings=data.settings;
+      saveDB();alert('✅ Datos importados correctamente');renderSettings();
+    }catch{alert('Error al leer el archivo');}
+  };r.readAsText(f);
 }
+function resetData(){DB.sessions=[];DB.habits={};DB.weights=[];DB.tests=[];saveDB();alert('Historial eliminado');renderTrack();}
 
-// ══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 // INIT
-// ══════════════════════════════════════════════════════
-if('serviceWorker' in navigator){
-  navigator.serviceWorker.register('./sw.js').catch(()=>{});
-}
+// ═══════════════════════════════════════════════════════
+if('serviceWorker' in navigator)navigator.serviceWorker.register('./sw.js').catch(()=>{});
 
-// Fix greeting (js template literal got broken, fix it properly)
-window.getGreeting=function(){
-  const h=new Date().getHours();
-  return h<13?'Buenos días':h<20?'Buenas tardes':'Buenas noches';
-};
+// Migrar datos de v1 si existen
+try{
+  const v1s=localStorage.getItem('ps_sessions');
+  if(v1s&&!DB.sessions.length){
+    const old=JSON.parse(v1s);
+    // Map old bloque/dia to new fi/si/dia
+    DB.sessions=old.map(s=>({...s,fi:s.bloque||0,si:s.bloque===0?(s.dia<=1?0:s.dia<=3?1:2):0,dia:s.dia||0}));
+    const v1h=localStorage.getItem('ps_habits');if(v1h)DB.habits=JSON.parse(v1h);
+    const v1w=localStorage.getItem('ps_weights');if(v1w)DB.weights=JSON.parse(v1w);
+    const v1st=localStorage.getItem('ps_settings');if(v1st)DB.settings=JSON.parse(v1st);
+    saveDB();
+    console.log('Migrated from v1: '+DB.sessions.length+' sessions');
+  }
+}catch(e){console.log('No v1 data to migrate');}
 
 renderHome();
+renderFaseBtns();
 renderBloqueDesc();
 renderRutina();
 
-// Auto-set today's date in weight-date placeholder
-document.getElementById('weight-date').placeholder=today();
-document.getElementById('test-date').placeholder=today();
-
-// If first visit, go to settings
 if(!DB.settings.startDate){
-  setTimeout(()=>{
-    if(confirm('Bienvenido/a a tu plan de salud.\n\n¿Quieres configurar tu perfil ahora?\n(nombre, fecha de inicio, peso inicial)'))
-      showScreen('settings');
-  },800);
+  setTimeout(()=>{if(confirm('Bienvenido/a a tu plan de salud v2.\n\n¿Configurar tu perfil ahora?\n(nombre, fecha de inicio, peso)'))showScreen('settings');},800);
 }
 </script>
 </body>
